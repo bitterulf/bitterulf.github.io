@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: 'verdana';
+    background-color: #191970;
+    color: #c8c8f3
+}
+.bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: #06061d;
+    color: #c8c8f3
+}
+.bottom a {
+    color: #c8c8f3
+}
+div.main {
+    color: #c8c8f3;
+    margin: 1rem
+}
+.navlinks-prev {
+    padding-top: .5rem;
+    padding-left: 1rem;
+    float: left
+}
+.navlinks-next {
+    padding-top: .5rem;
+    padding-right: 1rem;
+    float: right
+}
+div.navigation {
+    height: 2rem
+}
+.topbar {
+    background-color: #c8c8f3;
+    color: #191970;
+    padding: 1rem
+}
+.topbar img.logo {
+    height: 2rem;
+    width: 2rem
+}
+.topbar div {
+    display: inline-block
+}
+.topbar h1 {
+    padding: 0;
+    margin: 0
+}
+.topbar .small {
+    color: #7575e0
+}
+.menu {
+    background-color: #06061d;
+    color: #c8c8f3
+}
+.menu a {
+    color: #c8c8f3
+}
+.menu ul {
+    margin-top: 0;
+    margin-bottom: 0
+}
+.menu>ul,
+.bottom>ul {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+.bottom>ul {
+    padding-top: 0
+}
+.bottom>div {
+    padding-left: 1rem
+}
+.small {
+    font-size: 0.75rem
+}
+.content {
+    padding: 1rem
+}
+.content a {
+    color: #fff
+}
+table {
+    border: .1rem solid #c8c8f3
+}
+table td {
+    padding: .5rem
+}
+table th {
+    padding: .5rem;
+    background-color: #c8c8f3;
+    color: #191970
+}
