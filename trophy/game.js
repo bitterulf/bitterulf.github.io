@@ -153,11 +153,15 @@ function startGame() {
 }
 
 if (localStorage) {
-    var trophyGameState = { started: 0 };
+    var trophyGameState
     try {
         trophyGameState = JSON.parse(localStorage.getItem('trophyGameState'));
     } catch (e) {
         console.log(e);
+    }
+
+    if (!trophyGameState) {
+        trophyGameState = { started: 0 };
     }
 
     trophyGameState.started++;
