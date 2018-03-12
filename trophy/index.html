@@ -6,6 +6,7 @@
                 margin: 0;
             }
         </style>
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
         <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
         <script>
             kongregateAPI.loadAPI(function(){
@@ -18,7 +19,14 @@
                 if (!window.kongregate.services.isGuest()) {
                     console.log('username', window.kongregate.services.getUsername());
                     window.kongregate.stats.submit("game started", 1);
-                    console.log(kongregate.services.getGameAuthToken());
+
+                    fetch('./data.json?token='+kongregate.services.getGameAuthToken()+'&userId='+kongregate.services.getUserId())
+                        .then(function(response) {
+                            return response.json();
+                        })
+                        .then(function(data) {
+                            console.log(data);
+                        });
                 }
                 else {
                     console.log('hello guest');
