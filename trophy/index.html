@@ -18,6 +18,7 @@
                 if (!window.kongregate.services.isGuest()) {
                     console.log('username', window.kongregate.services.getUsername());
                     window.kongregate.stats.submit("game started", 1);
+                    console.log(kongregate.services.getGameAuthToken());
                 }
                 else {
                     console.log('hello guest');
