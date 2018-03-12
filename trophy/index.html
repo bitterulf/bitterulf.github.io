@@ -15,6 +15,12 @@
                     var username = kongregate.services.getUsername();
                     console.log('Kongregate username changed to: ' + username);
                 });
+                if (!kongregate.services.isGuest()) {
+                    console.log('username', kongregate.services.getUsername());
+                }
+                else {
+                    console.log('hello guest');
+                }
             });
         </script>
         <script src="phaser.2.6.2.min.js"></script>
