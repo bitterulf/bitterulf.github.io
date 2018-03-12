@@ -1,11 +1,20 @@
 <html>
     <head>
         <title>Trophy Stacker</title>
+        <style>
+            body {
+                margin: 0;
+            }
+        </style>
         <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
         <script>
             kongregateAPI.loadAPI(function(){
-                window.kongregate = kongregateAPI.getAPI();
+                var kongregate = kongregateAPI.getAPI();
                 console.log('kongregate active');
+                kongregate.services.addEventListener('login', function(){
+                    var username = kongregate.services.getUsername();
+                    console.log('Kongregate username changed to: ' + username);
+                });
             });
         </script>
         <script src="phaser.2.6.2.min.js"></script>
