@@ -1,6 +1,13 @@
 <html>
     <head>
         <title>Trophy Stacker</title>
+        <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+        <script>
+            kongregateAPI.loadAPI(function(){
+                window.kongregate = kongregateAPI.getAPI();
+                console.log('kongregate active');
+            });
+        </script>
         <script src="phaser.2.6.2.min.js"></script>
     </head>
     <body>
