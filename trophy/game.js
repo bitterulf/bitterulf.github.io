@@ -118,6 +118,9 @@ function click(pointer) {
 
         // use a revoluteContraint to attach mouseBody to the clicked body
         mouseConstraint = this.game.physics.p2.createRevoluteConstraint(mouseBody, [0, 0], clickedBody, [game.physics.p2.mpxi(localPointInBody[0]), game.physics.p2.mpxi(localPointInBody[1]) ]);
+        if (window.kongregate) {
+            window.kongregate.stats.submit("Trophies lifted", 1);
+        }
     }
 
 }

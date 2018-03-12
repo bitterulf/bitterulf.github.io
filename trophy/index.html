@@ -9,14 +9,14 @@
         <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
         <script>
             kongregateAPI.loadAPI(function(){
-                var kongregate = kongregateAPI.getAPI();
+                window.kongregate = kongregateAPI.getAPI();
                 console.log('kongregate active');
-                kongregate.services.addEventListener('login', function(){
-                    var username = kongregate.services.getUsername();
+                window.kongregate.services.addEventListener('login', function(){
+                    var username = window.kongregate.services.getUsername();
                     console.log('Kongregate username changed to: ' + username);
                 });
-                if (!kongregate.services.isGuest()) {
-                    console.log('username', kongregate.services.getUsername());
+                if (!window.kongregate.services.isGuest()) {
+                    console.log('username', window.kongregate.services.getUsername());
                 }
                 else {
                     console.log('hello guest');
