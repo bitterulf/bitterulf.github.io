@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scrape": "node ./tools/scrapeData.js"
+    "scrape": "node ./tools/scrapeData.js",
+    "render": "node ./tools/render.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/bitterulf/bitterulf.github.io#readme",
   "dependencies": {
+    "mithril": "^1.1.6",
+    "mithril-node-render": "^2.3.0",
+    "pretty": "^2.0.0",
     "x-ray": "^2.3.2"
   }
 }
