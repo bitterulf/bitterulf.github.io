@@ -1,0 +1,23 @@
+{
+  "name": "bitterulf.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scrape": "node ./tools/scrapeData.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitterulf:unkreativ0815@github.com/bitterulf/bitterulf.github.io.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/bitterulf/bitterulf.github.io/issues"
+  },
+  "homepage": "https://github.com/bitterulf/bitterulf.github.io#readme",
+  "dependencies": {
+    "x-ray": "^2.3.2"
+  }
+}
