@@ -3,303 +3,181 @@
   {
     "title": "Yakuza 6",
     "type": "Videospiel",
-    "link": "http://de.ign.com/yakuza-6/128196/review/yakuza-6-im-test-des-drachen-letzte-tat"
+    "image": "http://sm.ign.com/t/ign_de/game/y/yakuza-6/yakuza-6_ec7z.110.jpg",
+    "link": "http://de.ign.com/yakuza-6/128196/review/yakuza-6-im-test-des-drachen-letzte-tat",
+    "time": "2018-03-15T14:55:57+01:00",
+    "text": " Ich habe Ganoven verprügelt, einen Yakuza-Krieg angezettelt und mit vollbusigen Frauen geskyped. Kazuma Kiryu hat in seinem letzten Abenteuer einiges zu tun.",
+    "score": "9"
   },
   {
     "title": "Tomb Raider",
     "type": "Film",
-    "link": "http://de.ign.com/tomb-raider-reboot/128155/review/filmkritik-zu-tomb-raider-kein-grund-sich-im-grab-zu-drehen"
+    "image": "http://sm.ign.com/t/ign_de/movie/t/tomb-raide/tomb-raider-reboot_41e4.110.jpg",
+    "link": "http://de.ign.com/tomb-raider-reboot/128155/review/filmkritik-zu-tomb-raider-kein-grund-sich-im-grab-zu-drehen",
+    "time": "2018-03-14T18:00:00+01:00",
+    "text": " Nach dem Videospiel-Reboot, das Film-Reboot: Schafft Alicia Vikander für die Tomb Raider-Filme, was Square Enix mit den letzten beiden Titeln vollbrachte?",
+    "score": "7.8"
   },
   {
     "title": "Bridge Constructor Portal",
     "type": "Videospiel",
-    "link": "http://de.ign.com/bridge-constructor-portal/127978/review/bridge-constructor-portal-im-test-crossover-mit-starkem-fund"
+    "image": "http://sm.ign.com/t/ign_de/game/b/bridge-con/bridge-constructor-portal_sh9k.110.jpg",
+    "link": "http://de.ign.com/bridge-constructor-portal/127978/review/bridge-constructor-portal-im-test-crossover-mit-starkem-fund",
+    "time": "2018-03-02T10:00:00+01:00",
+    "text": " Bridge Constructor Portal ist zwar kein vollwertiger Teil der Portal Serie, fängt aber durch spaßige Rätsel und einer tollen Atmosphäre die Essenz des Valve-Franchises perfekt ein.",
+    "score": "7.8"
   },
   {
     "title": "Metal Gear Survive",
     "type": "Videospiel",
-    "link": "http://de.ign.com/metal-gear-survive/127949/review/metal-gear-survive-im-test-abstieg-in-die-mittelmassigkeit"
+    "image": "http://sm.ign.com/t/ign_de/game/m/metal-gear/metal-gear-survive_nwv7.110.jpg",
+    "link": "http://de.ign.com/metal-gear-survive/127949/review/metal-gear-survive-im-test-abstieg-in-die-mittelmassigkeit",
+    "time": "2018-03-01T14:03:26+01:00",
+    "text": " Konami liefert mit Metal Gear Survive keinen Totalausfall ab. An die Klasse der Vorgänger kommt das Spiel allerdings nicht ansatzweise heran.",
+    "score": "5.8"
   },
   {
     "title": "The Shape of Water",
     "type": "Film",
-    "link": "http://de.ign.com/the-shape-of-water/127741/review/filmkritik-shape-of-water-zwischen-mensch-monster"
+    "image": "http://sm.ign.com/t/ign_de/movie/default/the-shape-of-water-poster1_3rny.110.jpg",
+    "link": "http://de.ign.com/the-shape-of-water/127741/review/filmkritik-shape-of-water-zwischen-mensch-monster",
+    "time": "2018-02-16T15:45:37+01:00",
+    "text": " Shape of Water ist mehr als nur ein Liebesfilm. Er ist auch eine Ode an Außenseiter und eine Hommage ans Kino.",
+    "score": "8.7"
   },
   {
     "title": "Black Panther",
     "type": "Film",
-    "link": "http://de.ign.com/black-panther/127579/review/filmkritik-black-panther-wakanda-forever"
+    "image": "http://sm.ign.com/t/ign_de/movie/b/black-pant/black-panther_2y1m.110.jpg",
+    "link": "http://de.ign.com/black-panther/127579/review/filmkritik-black-panther-wakanda-forever",
+    "time": "2018-02-15T09:00:00+01:00",
+    "text": " Regisseur Ryan Coogler bringt mit Black Panther nicht nur Marvels ersten schwarzen Superhelden auf die Leinwand, sondern auch einen Ausnahme-Comicfilm.",
+    "score": "9"
   },
   {
     "title": "Kingdom Come: Deliverance",
     "type": "Videospiel",
-    "link": "http://de.ign.com/kingdom-come-deliverance/127691/review/kingdom-come-deliverance-im-test-zwischen-blut-schweiss-spie"
+    "image": "http://sm.ign.com/t/ign_de/game/k/kingdom-co/kingdom-come-deliverance_hzc6.110.png",
+    "link": "http://de.ign.com/kingdom-come-deliverance/127691/review/kingdom-come-deliverance-im-test-zwischen-blut-schweiss-spie",
+    "time": "2018-02-13T16:09:50+01:00",
+    "text": " Kingdom Come: Deliverance ist ein story-basiertes Open-World-RPG, mit dem Spieler ein episches Abenteuer im Heiligen Römischen Reich erleben. Die Rache für die Ermordung der eigenen Eltern führt den Spieler in den Kampf gegen einfallende Truppen, stellt ihn vor spannende Quests und schwerwiegende Entscheidungen. Majestätische Burgen und Schlösser, weitreichende Wälder, aufblühende Städte und noch vieles mehr bestimmten das Bild des mittelalterlichen Böhmen.",
+    "score": "6.7"
   },
   {
     "title": "Altered Carbon",
     "type": "TV",
-    "link": "http://de.ign.com/altered-carbon/127507/review/review-zu-altered-carbon-leben-sterben-in-zeiten-von-netflix"
+    "image": "http://sm.ign.com/t/ign_de/screenshot/default/1_ec4j.110.jpg",
+    "link": "http://de.ign.com/altered-carbon/127507/review/review-zu-altered-carbon-leben-sterben-in-zeiten-von-netflix",
+    "time": "2018-02-02T09:05:49+01:00",
+    "text": "Sci-Fi Based on the classic cyberpunk noir novel by Richard K. Morgan, Altered Carbon is an intriguing story of murder, love, sex, and betrayal, set more than 300 years in the future.",
+    "score": "7.8"
   },
   {
     "title": "Monster Hunter World",
     "type": "Videospiel",
-    "link": "http://de.ign.com/monster-hunter-5/127385/review/monster-hunter-world-im-test-der-grind-ist-das-ziel"
+    "image": "http://sm.ign.com/t/ign_de/game/m/monster-hu/monster-hunter-5_gd6g.110.jpg",
+    "link": "http://de.ign.com/monster-hunter-5/127385/review/monster-hunter-world-im-test-der-grind-ist-das-ziel",
+    "time": "2018-01-25T09:00:00+01:00",
+    "text": " Capcom bringt Monster Hunter mit World nach jahrelanger Abwesenheit wieder auf die stationären Konsolen zurück und legt den Fokus auf Online-Multiplayer.",
+    "score": "8.7"
   },
   {
     "title": "Dragon Ball FighterZ",
     "type": "Videospiel",
-    "link": "http://de.ign.com/dragon-ball-fighterz/127319/review/dragon-ball-fighterz-im-test-der-zum-spiel-gewordene-anime"
+    "image": "http://sm.ign.com/t/ign_de/game/d/dragon-bal/dragon-ball-fighterz_edsz.110.png",
+    "link": "http://de.ign.com/dragon-ball-fighterz/127319/review/dragon-ball-fighterz-im-test-der-zum-spiel-gewordene-anime",
+    "time": "2018-01-22T15:00:54+01:00",
+    "text": " Dragon Ball FighterZ baut die Prügelspiel-Ableger des Franchise nicht nur weiter aus, sondern findet gleichzeitig zu alten Stärken zurück.",
+    "score": "9"
   },
   {
     "title": "Life is Strange Before the Storm",
     "type": "Videospiel",
-    "link": "http://de.ign.com/life-is-strange-before-the-storm/125097/review/life-is-strange-before-the-storm-familienfehde-drogenhandel"
+    "image": "http://sm.ign.com/t/ign_de/game/l/life-is-st/life-is-strange-before-the-storm_z8p2.110.jpg",
+    "link": "http://de.ign.com/life-is-strange-before-the-storm/125097/review/life-is-strange-before-the-storm-familienfehde-drogenhandel",
+    "time": "2017-12-22T15:40:00+01:00",
+    "text": " Die erste Episode legt den Grundstein für Chloes und Rachels Beziehung, die für allerlei Drama in Life is Strange Before the Storm sorgt und sich in einem unbefriedigenden Finale entlädt.",
+    "score": "7"
   },
   {
     "title": "Star Wars: The Last Jedi",
     "type": "Film",
-    "link": "http://de.ign.com/star-wars-episode-viii/126827/review/filmkritik-zu-star-wars-the-last-jedi-eine-erschutterung-der"
+    "image": "http://sm.ign.com/t/ign_de/movie/s/star-wars-/star-wars-episode-viii_41vr.110.jpg",
+    "link": "http://de.ign.com/star-wars-episode-viii/126827/review/filmkritik-zu-star-wars-the-last-jedi-eine-erschutterung-der",
+    "time": "2017-12-12T18:00:25+01:00",
+    "text": "Sci-Fi Steht Rian Johnsons Star Wars: Episode 8 auf der dunklen oder hellen Seite der Macht – oder irgendwo dazwischen? Wir verraten es euch in unserer spoiler-freien Filmkritik.",
+    "score": "8"
   },
   {
     "title": "Coco",
     "type": "Film",
-    "link": "http://de.ign.com/disney-pixars-coco/126634/review/filmkritik-coco-liebe-deine-familie"
+    "image": "http://sm.ign.com/t/ign_de/movie/d/disney-pix/disney-pixars-coco_t38f.110.jpg",
+    "link": "http://de.ign.com/disney-pixars-coco/126634/review/filmkritik-coco-liebe-deine-familie",
+    "time": "2017-12-01T15:40:00+01:00",
+    "text": " Pixar-Urgestein und Regisseur Lee Unkrich schickt uns zum mexikanischen Tag der Toten auf eine emotionale Suche der Selbstfindung.",
+    "score": "8.9"
   },
   {
     "title": "Star Wars Battlefront 2",
     "type": "Videospiel",
-    "link": "http://de.ign.com/star-wars-battlefront-2/126430/review/star-wars-battlefront-2-im-test-eine-erschutterung-der-macht"
+    "image": "http://sm.ign.com/t/ign_de/game/s/star-wars-/star-wars-battlefront-2_3stc.110.jpg",
+    "link": "http://de.ign.com/star-wars-battlefront-2/126430/review/star-wars-battlefront-2-im-test-eine-erschutterung-der-macht",
+    "time": "2017-11-17T15:00:00+01:00",
+    "text": " Star Wars Battlefront 2 ist ein zweischneidiges Lichtschwert. Wer frohlocken und wer seufzen darf, das erfahrt ihr in unserem Test.",
+    "score": "6.7"
   },
   {
     "title": "The Punisher",
     "type": "TV",
-    "link": "http://de.ign.com/the-punisher-1/126436/review/marvels-the-punisher-in-der-kritik-netflix-ladt-nach"
+    "image": "http://sm.ign.com/t/ign_de/tv/t/the-punish/the-punisher-1_72yt.110.jpg",
+    "link": "http://de.ign.com/the-punisher-1/126436/review/marvels-the-punisher-in-der-kritik-netflix-ladt-nach",
+    "time": "2017-11-17T13:48:59+01:00",
+    "text": "Action-Adventure Nach dem katastrophalen Iron Fist und dem durchwachsenen The Defenders muss es Frank Castle richten, was dem brutalen Anti-Held sogar gelingt – zumindest teilweise.",
+    "score": "8"
   },
   {
     "title": "Wolfenstein 2",
     "type": "Videospiel",
-    "link": "http://de.ign.com/wolfenstein-new-colossus/126385/review/wolfenstein-the-new-colossus-im-test-einfach-mal-faschisten"
+    "image": "http://sm.ign.com/t/ign_de/game/w/wolfenstei/wolfenstein-new-colossus_mh7f.110.jpg",
+    "link": "http://de.ign.com/wolfenstein-new-colossus/126385/review/wolfenstein-the-new-colossus-im-test-einfach-mal-faschisten",
+    "time": "2017-11-15T16:00:00+01:00",
+    "text": " B.J. Blazkowicz hat The New Order überlebt und soll die USA aus den Fängen des Regimes befreien. Ein skandalöses Spiel und der wahrscheinlich beste Shooter des Jahres.",
+    "score": "9"
   },
   {
     "title": "Justice League",
     "type": "Film",
-    "link": "http://de.ign.com/justice-league-part-one/126374/review/filmkritik-zu-justice-league-die-0815-avengers"
+    "image": "http://sm.ign.com/t/ign_de/movie/j/justice-le/justice-league-part-one_6u98.110.png",
+    "link": "http://de.ign.com/justice-league-part-one/126374/review/filmkritik-zu-justice-league-die-0815-avengers",
+    "time": "2017-11-15T08:50:00+01:00",
+    "text": " Justice League ist keine Offenbarung für DCs Kino-versum. Dafür aber solide Superhelden-Action, die die Vorbelastung von Batman v Superman und Suicide Squad mit Würde stemmt.",
+    "score": "7"
   },
   {
     "title": "Stranger Things - Staffel 2",
     "type": "TV",
-    "link": "http://de.ign.com/stranger-things-season-2/126202/review/kritik-zu-stranger-things-staffel-2-in-den-80ern-war-nicht-a"
+    "image": "http://sm.ign.com/t/ign_de/screenshot/default/blob_pntz.110.jpg",
+    "link": "http://de.ign.com/stranger-things-season-2/126202/review/kritik-zu-stranger-things-staffel-2-in-den-80ern-war-nicht-a",
+    "time": "2017-11-04T13:00:00+01:00",
+    "text": " Das Regisseuren-Duo Matt und Ross Duffer schickt endlich die zweite Staffel von Stranger Things ins Rennen. Lohnt sich die Rückkehr ins Upside-Down?",
+    "score": "8.3"
   },
   {
     "title": "Call of Duty WW2",
     "type": "Videospiel",
-    "link": "http://de.ign.com/call-of-duty-2017/126177/review/call-of-duty-ww2-im-test-zwischen-michael-bay-historischer-a"
+    "image": "http://sm.ign.com/t/ign_de/game/c/call-of-du/call-of-duty-2017_damu.110.jpg",
+    "link": "http://de.ign.com/call-of-duty-2017/126177/review/call-of-duty-ww2-im-test-zwischen-michael-bay-historischer-a",
+    "time": "2017-11-03T09:00:00+01:00",
+    "text": " Sledgehammer Games liefert ein gutes Call of Duty ab, das am meisten bei seiner eigenen Kampagne strauchelt, aber beim Multiplayer glänzt.",
+    "score": "7.6"
   },
   {
     "title": "Thor Ragnarok",
     "type": "Film",
-    "link": "http://de.ign.com/thor-ragnarok/125910/review/filmkritik-zu-thor-tag-der-entscheidung-wenn-die-apokalypse"
-  }
-,
-  {
-    "title": "Super Mario Odyssey",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/super-mario-odyssey/126064/review/super-mario-odyssey-im-test-alles-andere-als-ein-alter-hut"
-  },
-  {
-    "title": "Assassin's Creed Origins",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/assassins-creed-origins/126056/review/assassins-creed-origins-im-test-fast-alles-neu-trotz-ubisoft"
-  },
-  {
-    "title": "The Evil Within 2",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/the-evil-within-2/125957/review/the-evil-within-2-im-test-blut-angstschweiss"
-  },
-  {
-    "title": "South Park: Die rektakuläre Zerreißprobe",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/south-park-the-fractured-but-whole/125861/review/south-park-die-rektakulare-zerreissprobe-im-test-nicht-zu-fe"
-  },
-  {
-    "title": "Blade Runner 2049",
-    "type": "Film",
-    "link": "http://de.ign.com/blade-runner-2/125699/review/filmkritik-blade-runner-2049-keine-tranen-im-regen"
-  },
-  {
-    "title": "Mittelerde: Schatten des Krieges",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/shadow-of-mordor-2/125641/review/mittelerde-schatten-des-krieges-im-test-tolkiens-welt-ist-le"
-  },
-  {
-    "title": "Forza Motorsport 7",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/forza-motorsport-7/125595/review/forza-motorsport-7-im-test-das-vorzeige-rennspiel-an-der-pol"
-  },
-  {
-    "title": "Kingsman: The Golden Circle",
-    "type": "Film",
-    "link": "http://de.ign.com/kingsman-2/125399/review/filmkritik-zu-kingsman-the-golden-circle-es-ist-nicht-alles"
-  },
-  {
-    "title": "Cars 3",
-    "type": "Film",
-    "link": "http://de.ign.com/cars-3/125240/review/filmkritik-cars-3-lightning-mcqueen-fahrt-dem-ruhestand-entg"
-  },
-  {
-    "title": "Mother!",
-    "type": "Film",
-    "link": "http://de.ign.com/mother-1/125237/review/mother-in-der-filmkritik-schwere-geburt"
-  },
-  {
-    "title": "ES",
-    "type": "Film",
-    "link": "http://de.ign.com/es-1/125151/review/filmkritik-es-ihr-werdet-schweben-vor-angst"
-  },
-  {
-    "title": "Destiny 2",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/destiny-2/125108/review/destiny-2-im-test-ein-quantensprung-nach-vorn"
-  },
-  {
-    "title": "Hellblade: Senua’s Sacrifice",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/hellblade/124634/review/hellblade-senuas-sacrifice-im-test-zwischen-wahn-wahnsinn"
-  },
-  {
-    "title": "Der Dunkle Turm",
-    "type": "Film",
-    "link": "http://de.ign.com/the-dark-tower/124614/review/filmkritik-der-dunkle-turm-der-weltuntergang-der-niemanden-i"
-  },
-  {
-    "title": "Dunkirk",
-    "type": "Film",
-    "link": "http://de.ign.com/dunkirk/124385/review/filmkritik-dunkirk-alles-was-zahlt-ist-die-hoffnung"
-  },
-  {
-    "title": "Atomic Blonde",
-    "type": "Film",
-    "link": "http://de.ign.com/atomic-blonde/124073/review/filmkritik-atomic-blonde-konkurrenz-fur-007"
-  },
-  {
-    "title": "Valerian - Die Stadt der Tausend Planeten",
-    "type": "Film",
-    "link": "http://de.ign.com/valerian-die-stadt-der-tausend-planeten/124200/review/filmkritik-valerian-ist-luc-bessons-valerian-mehr-als-eine-i"
-  },
-  {
-    "title": "Splatoon 2",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/splatoon-2/124180/review/splatoon-2-im-test-das-fehlende-stuck-der-dreifaltigkeit"
-  },
-  {
-    "title": "Baby Driver",
-    "type": "Film",
-    "link": "http://de.ign.com/baby-driver/124104/review/filmkritik-baby-driver-es-gibt-nur-ein-gas-vollgas"
-  },
-  {
-    "title": "Spider-Man: Homecoming",
-    "type": "Film",
-    "link": "http://de.ign.com/spider-man-marvel/123863/review/filmkritik-spider-man-homecoming-spidey-ist-da-wo-er-hingeho"
-  }
-,
-  {
-    "title": "Transformers: The Last Knight",
-    "type": "Film",
-    "link": "http://de.ign.com/transformers-5/124030/review/filmkritik-transformers-the-last-knight-ein-desaster"
-  },
-  {
-    "title": "Final Fantasy 12",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/final-fantasy-xii/123958/review/final-fantasy-12-the-zodiac-age-im-test-die-luftpiraten-stei"
-  },
-  {
-    "title": "Crash Bandicoot N. Sane Trilogy",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/crash-bandicoot-n-sane-trilogy/123819/review/crash-bandicoot-n-sane-trilogy-im-test-zweiter-fruhling-fur"
-  },
-  {
-    "title": "Okja",
-    "type": "Film",
-    "link": "http://de.ign.com/okja/123596/review/filmkritik-zu-okja-grosses-netflix-kino-oder-verpasste-serie"
-  },
-  {
-    "title": "Planet der Affen: Survival",
-    "type": "Film",
-    "link": "http://de.ign.com/war-for-the-planet-of-the-apes/123654/review/filmkritik-planet-der-affen-survival-when-a-good-ape-goes-to"
-  },
-  {
-    "title": "Arms",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/arms/123012/review/arms-im-test-bitte-hier-witziges-arm-wortspiel-einfugen"
-  },
-  {
-    "title": "Wonder Woman",
-    "type": "Film",
-    "link": "http://de.ign.com/wonder-woman-live-action/123397/review/filmkritik-zu-wonder-woman-gal-gadot-rettet-das-dc-extended"
-  },
-  {
-    "title": "Die Mumie",
-    "type": "Film",
-    "link": "http://de.ign.com/the-mummy-reboot/123046/review/filmkritik-zu-die-mumie-staubtrocken"
-  },
-  {
-    "title": "Everspace",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/everspace/122944/review/everspace-im-test-die-nicht-ganz-unendliche-vielfalt-des-tod"
-  },
-  {
-    "title": "Farpoint",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/farpoint/122939/review/test-zu-farpoint-eine-kleine-shooter-revolution-dank-aim-con"
-  },
-  {
-    "title": "Tekken 7",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/tekken-7/122899/review/test-zu-tekken-7-die-letzte-schlacht-der-mishimas"
-  },
-  {
-    "title": "Tokyo 42",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/tokyo-42/122814/review/tokyo-42-im-test-als-hatte-man-bei-blade-runner-das-licht-an"
-  },
-  {
-    "title": "Fluch der Karibik 5 - Salazars Rache",
-    "type": "Film",
-    "link": "http://de.ign.com/pirates-of-the-caribbean-dead-men-tell-no-tales/122633/review/filmkritik-fluch-der-karibik-5-salazars-rache-totes-meer"
-  },
-  {
-    "title": "Baywatch",
-    "type": "Film",
-    "link": "http://de.ign.com/baywatch/122584/review/baywatch-in-der-filmkritik-so-unterhaltsam-wie-der-stich-ein"
-  },
-  {
-    "title": "Injustice 2",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/injustice-2/122554/review/review-zu-injustice-2-gegeneinander-ist-schoner-als-miteinan"
-  },
-  {
-    "title": "Alien Covenant",
-    "type": "Film",
-    "link": "http://de.ign.com/prometheus-2/122367/review/filmkritik-zu-alien-covenant-traumen-roboter-von-der-schopfu"
-  },
-  {
-    "title": "Sonos Playbase",
-    "type": "Gadgets",
-    "link": "http://de.ign.com/sonos-playbase/121896/review/revolution-im-wohnzimmer-sonos-playbase-kinosound-fast-ohne"
-  },
-  {
-    "title": "Dawn of War 3",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/dawn-of-war-3/122122/review/review-dawn-of-war-3-will-alles-fur-alle-sein"
-  },
-  {
-    "title": "Outlast 2",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/outlast-2/122040/review/review-outlast-2-ist-zum-furchten"
-  },
-  {
-    "title": "Mario Kart 8 Deluxe",
-    "type": "Videospiel",
-    "link": "http://de.ign.com/mario-kart-8-deluxe/121986/review/review-zu-mario-kart-8-deluxe-edition-mit-dem-motorrad-uber"
+    "image": "http://sm.ign.com/t/ign_de/movie/t/thor-ragna/thor-ragnarok_w7wd.110.jpg",
+    "link": "http://de.ign.com/thor-ragnarok/125910/review/filmkritik-zu-thor-tag-der-entscheidung-wenn-die-apokalypse",
+    "time": "2017-10-30T14:42:00+01:00",
+    "text": " Der dramatische Höhepunkt Thors Reise wird von Regisseur Taika Waititi zur farbenfrohen Komödie umgebaut. Das funktioniert leider nicht immer.",
+    "score": "7"
   }
 ]

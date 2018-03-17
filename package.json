@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "scrape": "node ./tools/scrapeData.js",
+    "scrapeMeta": "node ./tools/scrapeMeta.js",
+    "scrapeSyn": "node ./tools/scrapeSynonyms.js",
     "render": "node ./tools/render.js"
   },
   "repository": {
@@ -19,8 +21,11 @@
   },
   "homepage": "https://github.com/bitterulf/bitterulf.github.io#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
+    "cheerio": "^1.0.0-rc.2",
     "mithril": "^1.1.6",
     "mithril-node-render": "^2.3.0",
+    "node-wikipedia": "0.0.2",
     "pretty": "^2.0.0",
     "x-ray": "^2.3.2"
   }

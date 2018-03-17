@@ -1,0 +1,194 @@
+{
+  "Yakuza_(Computerspiel)": {
+    "name": "Yakuza_(Computerspiel)",
+    "title": "Yakuza (Computerspiel)",
+    "pageid": 2055257,
+    "categories": [
+      "USK_18",
+      "Computerspiel_2005",
+      "Action-Adventure",
+      "PlayStation-2-Spiel",
+      "Open-World-Spiel"
+    ],
+    "meta": {
+      "USK": "PEGI",
+      "Studio": "Sega Entertainment R&D #1",
+      "Publisher": "Sega",
+      "Leitende Entwickler": "Toshihiro Nagoshi (Produzent)Hase Seishu (Autor)",
+      "Erstveröffent-lichung": "Japan 8. Dezember 2005Nordamerika 5. September 2006Europa 15. September 2006",
+      "Plattform": "PlayStation 2",
+      "Genre": "Action-Adventure",
+      "Spielmodus": "Einzelspieler",
+      "Steuerung": "Gamepad",
+      "Medium": "DVD",
+      "Altersfreigabe": "USK PEGI"
+    }
+  },
+  "Kingdom Come: Deliverance": {
+    "name": "Kingdom Come: Deliverance",
+    "title": "Kingdom Come: Deliverance",
+    "pageid": 8358530,
+    "categories": [
+      "USK_16",
+      "Computer-Rollenspiel",
+      "Computerspiel_2018",
+      "Windows-Spiel",
+      "Xbox-One-Spiel",
+      "PlayStation-4-Spiel"
+    ],
+    "meta": {
+      "USK": "PEGI",
+      "Studio": "Warhorse Studios",
+      "Publisher": "Deep SilverWarhorse Studios (Steam)",
+      "Leitende Entwickler": "Daniel Vávra",
+      "Erstveröffent-lichung": "13. Februar 2018",
+      "Plattform": "Microsoft Windows, PlayStation 4, Xbox One",
+      "Spiel-Engine": "CryEngine",
+      "Genre": "Rollenspiel",
+      "Thematik": "Mittelalter",
+      "Spielmodus": "Einzelspieler",
+      "Steuerung": "Tastatur, Controller",
+      "Medium": "Download, Blu-Ray",
+      "Sprache": "Englisch, Deutsch",
+      "Aktuelle Version": "1.3.1 (9. März 2018)[1]",
+      "Altersfreigabe": "USK PEGI"
+    }
+  },
+  "Monster_Hunter": {
+    "name": "Monster_Hunter",
+    "title": "Monster Hunter",
+    "pageid": 1048851,
+    "categories": [
+      "USK_12",
+      "Computerspiel_2004",
+      "Computer-Rollenspiel",
+      "Action-Adventure",
+      "PlayStation-2-Spiel",
+      "Wii-Spiel",
+      "PlayStation-Portable-Spiel",
+      "Windows-Spiel",
+      "Manga_(Werk)",
+      "Nintendo-3DS-Spiel",
+      "Wii-U-Spiel",
+      "IOS-Spiel"
+    ],
+    "meta": {
+      "USK": "PEGI",
+      "Studio": "Capcom",
+      "Publisher": "Japan Capcom",
+      "Erstveröffent-lichung": "Japan 11. März 2004Nordamerika 21. September 2004Europa 27. Mai 2005",
+      "Plattform": "3DS, PlayStation 2, PSP, Wii, Windows, Wii U, Nintendo Switch, iOS",
+      "Genre": "Action-Rollenspiel",
+      "Thematik": "fiktives Mittelalter",
+      "Spielmodus": "Einzelspieler, Mehrspieler",
+      "Steuerung": "Gamepad, Handheld-Tasten",
+      "Medium": "DVD, UMD, Cartridge",
+      "Sprache": "Englisch",
+      "Altersfreigabe": "USK PEGI"
+    }
+  },
+  "Life Is Strange: Before the Storm": {
+    "name": "Life Is Strange: Before the Storm",
+    "title": "Life Is Strange: Before the Storm",
+    "pageid": 9945630,
+    "categories": [
+      "USK_12",
+      "Adventure",
+      "Computerspiel_2017",
+      "Windows-Spiel",
+      "PlayStation-4-Spiel",
+      "Xbox-One-Spiel"
+    ],
+    "meta": {
+      "USK": "PEGI",
+      "Studio": "Deck Nine",
+      "Publisher": "Square Enix",
+      "Leitende Entwickler": "Webb Pickersgill (Lead Director)Chris Floyd (Lead Director)Zak Garriss (Chef-Autor)Andrew Weatherl (Art Director)",
+      "Komponist": "Daughter",
+      "Erstveröffent-lichung": "Episode 1: 31. August 2017Episode 2: 19. Oktober 2017Episode 3: 19. Dezember 2017Bonusepisode: 5. März 2018",
+      "Plattform": "PS4, Windows, Xbox One",
+      "Spiel-Engine": "Unity",
+      "Genre": "Adventure",
+      "Spielmodus": "Einzelspieler",
+      "Steuerung": "Maus, Tastatur, Gamepad",
+      "Systemvor-aussetzungen": "Windows 7 (nur 64-Bit; 32-Bit wird nicht unterstützt)  Intel Core i3-2100 (3.1GHz) oder AMD Phenom X4 945 (3.0GHz)  3 GB RAM  AMD Radeon R7 250 oder NVIDIA Geforce GTX 650  DirectX 11  14 GB Speicherplatz",
+      "Medium": "Download",
+      "Sprache": "Audio: EnglischUntertitel: Deutsch, Englisch, Französisch, Italienisch, Spanisch, Brasilianisches Portugiesisch, Chinesisch (vereinfacht)",
+      "Aktuelle Version": "PS4: 1.04 (9. Januar 2018)",
+      "Altersfreigabe": "USK PEGI"
+    }
+  },
+  "Star Wars Battlefront 2": {
+    "name": "Star Wars Battlefront 2",
+    "title": "Star Wars: Battlefront II",
+    "pageid": 9866537,
+    "categories": [
+      "Begriffsklärung"
+    ],
+    "meta": {}
+  },
+  "Wolfenstein II: The New Colossus": {
+    "name": "Wolfenstein II: The New Colossus",
+    "title": "Wolfenstein II: The New Colossus",
+    "pageid": 10015419,
+    "categories": [
+      "USK_18",
+      "Computerspiel_2017",
+      "Ego-Shooter",
+      "PlayStation-4-Spiel",
+      "Windows-Spiel",
+      "Xbox-One-Spiel"
+    ],
+    "meta": {
+      "USK": "PEGI",
+      "Studio": "Schweden MachineGames",
+      "Publisher": "Vereinigte Staaten Bethesda Softworks",
+      "Leitende Entwickler": "Jens Matthies, Arcade Berg",
+      "Komponist": "Mick Gordon, Martin Stig Andersen",
+      "Erstveröffent-lichung": "Windows, Xbox One, PlayStation 4:27. Oktober 2017Nintendo Switch:2018",
+      "Plattform": "Windows, PlayStation 4 (Pro), Xbox One, Nintendo Switch",
+      "Spiel-Engine": "id Tech 6",
+      "Genre": "Ego-Shooter, Action-Adventure",
+      "Thematik": "Alternativwelt, Dystopie",
+      "Spielmodus": "Einzelspieler",
+      "Steuerung": "Maus, Tastatur, Gamepad",
+      "Systemvor-aussetzungen": "Windows 7,8,10 (64-Bit)Intel Core i5-3570/i7-3770 oder AMD FX-8350/Ryzen 5 1400, 8 GB RAM, NVIDIA GeForce GTX 770 oder AMD Radeon R9 290, 55 GB Speicherplatz, Breitband-Internetverbindung[1]",
+      "Medium": "Blu-ray, Download",
+      "Sprache": "Deutsch",
+      "Altersfreigabe": "USK PEGI",
+      "Information": "USK-Fassung mit inhaltlichen Anpassungen."
+    }
+  },
+  "Call of Duty: WWII": {
+    "name": "Call of Duty: WWII",
+    "title": "Call of Duty: WWII",
+    "pageid": 9880599,
+    "categories": [
+      "USK_18",
+      "Computerspiel_2017",
+      "Ego-Shooter",
+      "Windows-Spiel",
+      "Xbox-One-Spiel",
+      "PlayStation-4-Spiel"
+    ],
+    "meta": {
+      "USK": "PEGI",
+      "Studio": "Vereinigte Staaten Sledgehammer GamesVereinigte Staaten Raven Software",
+      "Publisher": "Vereinigte Staaten Activision",
+      "Leitende Entwickler": "Glen Schofield, Michael Condrey",
+      "Erstveröffent-lichung": "Welt 3. November 2017",
+      "Plattform": "Microsoft WindowsPlayStation 4Xbox One",
+      "Spiel-Engine": "IW Engine[1]",
+      "Genre": "Ego-Shooter",
+      "Thematik": "Westfront, Zweiter Weltkrieg",
+      "Spielmodus": "Einzelspieler, Mehrspieler",
+      "Steuerung": "Tastatur, Maus, Gamepad",
+      "Medium": "Download, Blu-ray, DVD",
+      "Sprache": "Deutsch",
+      "Aktuelle Version": "PS4: 1.10 (14. Februar 2018)",
+      "Kopierschutz": "Steamworks",
+      "Altersfreigabe": "USK PEGI",
+      "Information": "Keine verfassungsfeindlichen Symbole in der deutschen USK- sowie in den AT- und CH-PEGI-Fassungen"
+    }
+  }
+}
