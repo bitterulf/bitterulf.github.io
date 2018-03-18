@@ -44,7 +44,18 @@ function startGame() {
 
         item.tint = styles[style];
 
+        const text = game.add.text(0, 0, 'yolo', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        console.log(text);
+        text.stroke = '#000000';
+        text.strokeThickness = 2;
+        text.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5);
+        text.data.static = true;
+        text.text = 'MEOW!';
+
+        item.addChild(text);
+
         items.push(item);
+        items.push(text);
     }
 
     function addRandomItem(x, y) {
