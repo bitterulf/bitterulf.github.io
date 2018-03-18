@@ -1,0 +1,236 @@
+<html>
+    <head>
+        <title>troll</title>
+    </head>
+    <body>
+        <script src="//unpkg.com/mithril/mithril.js"></script>
+        <script>
+
+            const events = [
+                {type: 'createWorker', payload: { name: 'bob' } },
+                {type: 'createWorker', payload: { name: 'kevin' } },
+                {type: 'createWorker', payload: { name: 'stuart' } },
+                {type: 'createTask', payload: { name: 'cleaning up', type: 'cleaning', time: 100 } },
+                {type: 'createTask', payload: { name: 'make chaos', type: 'chaos', time: 100 } },
+                {type: 'asignTask', payload: { worker: 'ID1', task: 'ID4' } },
+                {type: 'trainWorker', payload: { worker: 'ID1', type: 'cleaning' } },
+                {type: 'trainWorker', payload: { worker: 'ID2', type: 'chaos' } }
+            ];
+
+            const actions = {
+                asignTask: function(workerId, taskId) {
+                    events.push({type: 'asignTask', payload: { worker: workerId, task: taskId } });
+                },
+                unasignTask: function(workerId, taskId) {
+                    events.push({type: 'unasignTask', payload: { worker: workerId } });
+                },
+                endTurn: function() {
+                    state = recalculateState();
+                    console.log(state.tasks);
+                    state.tasks.forEach(function(task) {
+                        let summedWorkPower = 0;
+                        task.asignedWorkers.forEach(function(entry) {
+                            summedWorkPower += entry.workPower;
+                        });
+
+                        if (summedWorkPower) {
+                            if (summedWorkPower < task.remainingTime) {
+                                events.push({type: 'improveTask', payload: { task: task.id, workPower: summedWorkPower } });
+                            }
+                            else {
+                                events.push({type: 'finishTask', payload: { task: task.id } });
+                            }
+                        }
+                    });
+                }
+            }
+
+            function recalculateState() {
+                var idCounter = 0;
+
+                function id() {
+                    idCounter++;
+                    return 'ID' + idCounter
+                }
+
+                const state = {
+                    workers: [],
+                    tasks: [],
+                    asignments: [],
+                    trainings: []
+                };
+
+                events.forEach(function(event) {
+                    if (event.type == 'createWorker') {
+                        state.workers.push({ id: id(), name: event.payload.name, state: 'idle', skills: {} });
+                    }
+                    else if (event.type == 'createTask') {
+                        state.tasks.push({ id: id(), name: event.payload.name, type: event.payload.type, time: event.payload.time,  remainingTime: event.payload.time, asignedWorkers: [] });
+                    }
+                    else if (event.type == 'asignTask') {
+                        const worker = state.workers.find(function(worker) {
+                            return worker.id == event.payload.worker;
+                        });
+                        const task = state.tasks.find(function(task) {
+                            return task.id == event.payload.task;
+                        });
+                        if (worker && task) {
+                            state.asignments.push({
+                                worker: worker.id,
+                                task: task.id
+                            });
+                        }
+                    }
+                    else if (event.type == 'unasignTask') {
+                        const worker = state.workers.find(function(worker) {
+                            return worker.id == event.payload.worker;
+                        });
+                        if (worker) {
+                            state.asignments = state.asignments.filter(function(asignment) {
+                                return asignment.worker != worker.id;
+                            });
+                        }
+                    }
+                    else if (event.type == 'trainWorker') {
+                        const worker = state.workers.find(function(worker) {
+                            return worker.id == event.payload.worker;
+                        });
+                        if (worker) {
+                            state.trainings.push({
+                                worker: worker.id,
+                                type: event.payload.type
+                            });
+                        }
+                    }
+                    else if (event.type == 'improveTask') {
+                        const task = state.tasks.find(function(task) {
+                            return task.id == event.payload.task;
+                        });
+
+                        task.remainingTime -= event.payload.workPower;
+                    }
+                    else if (event.type == 'finishTask') {
+                        state.tasks = state.tasks.filter(function(task) {
+                            return task.id != event.payload.task;
+                        });
+                        state.asignments = state.asignments.filter(function(asignment) {
+                            return asignment.task != event.payload.task;
+                        });
+                    }
+                });
+
+                state.trainings.forEach(function(training) {
+                    const worker = state.workers.find(function(worker) {
+                        return worker.id == training.worker;
+                    });
+
+                    if (worker) {
+                        if (!worker.skills[training.type]) {
+                            worker.skills[training.type] = 0;
+                        }
+                        worker.skills[training.type]++;
+                    }
+                });
+
+                state.asignments.forEach(function(asignment){
+                    const worker = state.workers.find(function(worker) {
+                        return worker.id == asignment.worker;
+                    });
+                    const task = state.tasks.find(function(task) {
+                        return task.id == asignment.task;
+                    });
+
+                    if (worker && task) {
+                        console.log(worker.skills);
+                        worker.state = task.name;
+                        task.asignedWorkers.push({
+                            id: worker.id,
+                            workPower: 1 + (worker.skills[task.type] || 0),
+                            name: worker.name
+                        });
+                    }
+                });
+
+                return state;
+            }
+
+            var WorkerList = {
+                view: function(vnode) {
+                    const state = vnode.attrs.state
+
+                    return m("table", { border: 1 }, state.workers.map(function(worker) {
+                        const workerActions = [];
+
+                        if (worker.state == 'idle') {
+                            state.tasks.forEach(function(task) {
+                                workerActions.push(m('button', {
+                                    onclick: function() {
+                                        actions.asignTask(worker.id, task.id);
+                                    }
+                                }, task.name + '[' + (1 + (worker.skills[task.type] || 0)) + ']'));
+                            });
+                        }
+                        else {
+                            workerActions.push(m('button', {
+                                onclick: function() {
+                                    actions.unasignTask(worker.id);
+                                }
+                            }, 'cancel'));
+                        }
+
+                        return m('tr', [
+                            m('td', worker.id),
+                            m('td', worker.name),
+                            m('td', worker.state),
+                            m('td', workerActions)
+                        ]);
+                    }))
+                }
+            };
+
+            var TaskList = {
+                view: function(vnode) {
+                    const state = vnode.attrs.state
+
+                    return m("table", { border: 1 }, state.tasks.map(function(task) {
+                        let summedWorkPower = 0;
+                        task.asignedWorkers.forEach(function(entry) {
+                            summedWorkPower += entry.workPower;
+                        });
+
+                        const finishedIn = summedWorkPower ? 'finished in '+Math.ceil(task.remainingTime / summedWorkPower) : 'paused' ;
+                        return m('tr', [
+                            m('td', task.id),
+                            m('td', task.name),
+                            m('td', task.type),
+                            m('td', task.remainingTime + '/' + task.time + '/' + summedWorkPower),
+                            m('td', finishedIn),
+                            m('td', task.asignedWorkers.map(function(entry) {
+                                return m('div', entry.name + '[+' + entry.workPower + ']');
+                            }))
+                        ]);
+                    }))
+                }
+            };
+
+            var Game = {
+                view: function() {
+                    const state = recalculateState();
+
+                    return m("main", [
+                        m("h1", {class: "title"}, "troll management"),
+                        m("div", m(WorkerList, { state: state })),
+                        m("div", m(TaskList, { state: state })),
+                        m('button', { onclick: function() {
+                            actions.endTurn();
+                        } }, 'end turn')
+                    ])
+                }
+            };
+
+            var root = document.body
+
+            m.mount(root, Game);
+        </script>
+    </body>
+</html>
