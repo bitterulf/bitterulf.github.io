@@ -21,11 +21,11 @@ function startGame() {
     var mouseConstraint;
 
     var items = [];
+    var trophies = [];
 
     function addShelf(x, y) {
         var item = game.add.sprite(x, y, 'shelf');
         item.data.polygon = 'shelf';
-        item.data.static = true;
         item.anchor.set(0.5);
 
         items.push(item);
@@ -54,7 +54,7 @@ function startGame() {
 
         item.addChild(text);
 
-        items.push(item);
+        trophies.push(item);
         items.push(text);
     }
 
@@ -89,12 +89,17 @@ function startGame() {
         game.physics.p2.updateBoundsCollisionGroup();
 
         //  Enable the physics bodies on all the sprites
-        game.physics.p2.enable(items, false);
+        game.physics.p2.enable(items.concat(trophies), false);
 
         items.forEach(function(item) {
-            if (item.data.static) {
-                item.body.static = true;
-            }
+            item.body.static = true;
+            item.body.clearShapes();
+            item.body.loadPolygon('physicsData', item.data.polygon);
+            item.body.setCollisionGroup(blockCollisionGroup);
+            item.body.collides([blockCollisionGroup]);
+        });
+
+        trophies.forEach(function(item) {
             item.body.clearShapes();
             item.body.loadPolygon('physicsData', item.data.polygon);
             item.body.setCollisionGroup(blockCollisionGroup);
@@ -115,7 +120,7 @@ function startGame() {
 
     function click(pointer) {
 
-        var bodies = game.physics.p2.hitTest(pointer.position, items.map(function(item) { return item.body }));
+        var bodies = game.physics.p2.hitTest(pointer.position, trophies.map(function(item) { return item.body }));
 
         // p2 uses different coordinate system, so convert the pointer position to p2's coordinate system
         var physicsPos = [game.physics.p2.pxmi(pointer.position.x), game.physics.p2.pxmi(pointer.position.y)];
@@ -156,9 +161,7 @@ function startGame() {
     }
 
     function render() {
-
-    //  game.debug.text(result, 32, 32);
-
+        game.debug.text(items.length, 32, 32);
     }
 
 }
