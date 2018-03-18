@@ -31,20 +31,21 @@ function startGame() {
         items.push(item);
     }
 
-    function addItem(sprite, polygon, x, y, style) {
+    function addItem(sprite, polygon, x, y, style, score) {
         var item = game.add.sprite(x, y, sprite);
         item.data.polygon = polygon;
+        item.data.score = score;
         item.anchor.set(0.5);
 
         var styles = [
             0xffff00,
-            0xfc7d00,
-            0xffffff
+            0xffffff,
+            0xfc7d00
         ];
 
         item.tint = styles[style];
 
-        const text = game.add.text(0, 0, 'yolo', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        const text = game.add.text(0, 80, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
         console.log(text);
         text.stroke = '#000000';
         text.strokeThickness = 2;
@@ -60,11 +61,16 @@ function startGame() {
 
     function addRandomItem(x, y) {
         var sizes = ['', 'm', 's'];
+        var sizeScores = [100, 50, 25];
+        var styleScores = [100, 50, 25];
         var style = game.rnd.integerInRange(0, 2);
         var size = game.rnd.integerInRange(0, 2);
         var type = game.rnd.integerInRange(1, 3);
-        addItem('trophy'+type+sizes[size], 'trophy'+type+sizes[size], x, y, style);
+        var score = sizeScores[size] + styleScores[style];
+        addItem('trophy'+type+sizes[size], 'trophy'+type+sizes[size], x, y, style, score);
     }
+
+    var scoreText;
 
     function create() {
 
@@ -78,9 +84,11 @@ function startGame() {
 
         addShelf(400, 400);
 
-        addRandomItem(200, 300);
-        addRandomItem(400, 300);
-        addRandomItem(600, 300);
+        addRandomItem(200, 600);
+        addRandomItem(300, 600);
+        addRandomItem(400, 600);
+        addRandomItem(500, 600);
+        addRandomItem(600, 600);
 
         //  Create collision group for the blocks
 
@@ -116,6 +124,8 @@ function startGame() {
         game.input.addMoveCallback(move, this);
 
         var curtain = game.add.sprite(0, 0, 'curtain');
+
+        scoreText = game.add.text(game.world.centerX, 40, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
     }
 
     function click(pointer) {
@@ -157,11 +167,37 @@ function startGame() {
 
     }
 
+    var totalScore = 0;
+    var goalScore = 0;
+
     function update() {
+        totalScore = 0;
+        goalScore = 0;
+        trophies.forEach(function(item) {
+            const angleMultiplier = 1 - Math.abs(Math.round(item.angle)) / 180;
+
+            const yMultiplier = 1 - item.y / 360;
+            const yMultiplierCleaned = yMultiplier > 0 ? yMultiplier : 0;
+
+            var calculatedScore = Math.round((angleMultiplier + yMultiplierCleaned) * item.data.score);
+            if (yMultiplierCleaned == 0) {
+                calculatedScore = 0;
+            }
+            var color = '#ffffff';
+            if (calculatedScore > item.data.score) {
+                color = '#00ff00';
+            }
+            totalScore += calculatedScore;
+            item.children[0].text = calculatedScore + ' / ' + item.data.score;
+            item.children[0].style.fill = color;
+            goalScore += item.data.score * 1.3;
+        });
+
+        scoreText.text = totalScore + ' / ' + goalScore;
     }
 
     function render() {
-        game.debug.text(items.length, 32, 32);
+        // game.debug.text(totalScore, 32, 32);
     }
 
 }
