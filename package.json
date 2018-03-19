@@ -23,6 +23,7 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "cheerio": "^1.0.0-rc.2",
+    "elasticlunr": "^0.9.5",
     "mithril": "^1.1.6",
     "mithril-node-render": "^2.3.0",
     "node-wikipedia": "0.0.2",
