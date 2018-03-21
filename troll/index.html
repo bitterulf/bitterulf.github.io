@@ -5,9 +5,11 @@
     <body>
         <script>const plugins = [];</script>
         <script src="//unpkg.com/mithril/mithril.js"></script>
+        <script src="components.js"></script>
         <script src="workerPlugin.js"></script>
         <script src="taskPlugin.js"></script>
         <script src="workerList.js"></script>
+        <script src="workerInfo.js"></script>
         <script src="taskList.js"></script>
         <script src="actions.js"></script>
         <script>
@@ -55,6 +57,7 @@
                     });
                 });
 
+                console.log(state);
                 return state;
             }
 
@@ -63,10 +66,11 @@
                     const state = recalculateState();
 
                     return m("main", [
-                        m("h1", {class: "title"}, "troll management"),
-                        m("div", m(WorkerList, { state: state })),
-                        m("div", m(TaskList, { state: state })),
-                        m('button', { onclick: function() {
+                        m(Title, "troll management"),
+                        m(Block, m(WorkerInfo, { state: state })),
+                        m(Block, m(WorkerList, { state: state })),
+                        m(Block, m(TaskList, { state: state })),
+                        m(Button, { onclick: function() {
                             actions.endTurn();
                         } }, 'end turn')
                     ])

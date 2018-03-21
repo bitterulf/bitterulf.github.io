@@ -5,6 +5,9 @@ const actions = {
     unasignTask: function(workerId, taskId) {
         events.push({type: 'unasignTask', payload: { worker: workerId } });
     },
+    selectWorker: function(workerId) {
+        events.push({type: 'selectWorker', payload: { worker: workerId } });
+    },
     endTurn: function() {
         state = recalculateState();
         console.log(state.tasks);

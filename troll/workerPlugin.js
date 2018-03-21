@@ -4,10 +4,19 @@ plugins.push(
         prepareState: function(state) {
             state.tasks = [];
             state.asignments = [];
+            state.selectedWorker =  null;
         },
         mutators: {
             createWorker: function(tools, state, event) {
                 state.workers.push({ id: tools.id(), name: event.payload.name, state: 'idle', skills: {} });
+            },
+            selectWorker: function(tools, state, event) {
+                const worker = state.workers.find(function(worker) {
+                    return worker.id == event.payload.worker;
+                });
+                if (worker) {
+                    state.selectedWorker = worker;
+                }
             },
             trainWorker: function(tools, state, event) {
                 const worker = state.workers.find(function(worker) {
