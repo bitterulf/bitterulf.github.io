@@ -61,12 +61,38 @@
                 return state;
             }
 
+            var Icon = {
+                view: function(vnode) {
+                    return m('canvas', { id: 'example', width: vnode.attrs.width, height: vnode.attrs.height });
+                },
+                oncreate: function(vnode) {
+                    const height = vnode.attrs.height;
+                    const width = vnode.attrs.width;
+
+                    const canvas = vnode.dom;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = "rgba("+vnode.attrs.color1+",0.1)";
+                    for (var x = 0; x < Math.floor(width/2); x++) {
+                        ctx.fillRect(x, 0, Math.floor(width/2), height);
+                    }
+                    ctx.fillStyle = "rgba("+vnode.attrs.color2+",0.1)";
+                    for (var x = 0; x < Math.floor(width/4); x++) {
+                        ctx.fillRect(x+Math.floor(width/4), 0, Math.floor(width/4), height);
+                    }
+
+                    console.log(canvas.toDataURL());
+                }
+            };
+
             var Game = {
                 view: function() {
                     const state = recalculateState();
 
                     return m("main", [
                         m(Title, "troll management"),
+                        m(Icon, {width: 128, height: 128, color1: '200,0,0', color2: '200,200,0'}),
+                        m(Icon, {width: 64, height: 64, color1: '200,0,200', color2: '200,200,0'}),
+                        m(Icon, {width: 32, height: 32, color1: '200,0,0', color2: '200,0,200'}),
                         m(Block, m(WorkerInfo, { state: state })),
                         m(Block, m(WorkerList, { state: state })),
                         m(Block, m(TaskList, { state: state })),
