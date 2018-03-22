@@ -16,7 +16,29 @@ var Block = {
     }
 };
 
-const background = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAACnUlEQVR4nO3Sv0oQUBQH4N9LtPgCzk0+QT5Am0sP4NokjQ5BkxC0CNHgIAiBhISZaZx7nVpaHBwCQQiJkExFvEvLfYiGb7pwuX/O+Z0vLVk4SR73ZLmSlUpWW7LWkpcteV3J25Zst2S3Jfs9Oe7JSUu+teR7T057ctaSHz0578lFS3725LInv3ryuyVXLfnTkuuW/G3JTU9ue3LXH+W+LeahljLqSUY9zahnGbWaUc8z6kVGrWfUq4zayKg3GbWZUe8yaiujtjNqJ6PeZ9RuRn3IqL2M+phR+xn1KaMOMupzRh1m1JeMOsqo44z6OtejuX84zx3Me/vznb357u78Z2f+uzXr2Jx1bcw612fdz2cfz2ZfTzJqKaMt5qE/yn1P7npy25Kbmcv1zOmqJ79nfpczz4uenM+cz3py2pLvLfnWk5OeHLdkf85pe87t9ZzjWiWrlaz0ZPkkedyShSQJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA/wHgH7jYsonzQU4JAAAAAElFTkSuQmCC';
+const generateTexture = function(width, height, color1, color2) {
+
+    const canvas = document.createElement('canvas');
+
+    const ctx = canvas.getContext('2d');
+    ctx.canvas.width  = width;
+    ctx.canvas.height = height;
+    ctx.fillStyle = "rgba("+color1+",0.1)";
+    for (var x = 0; x < Math.floor(width/2); x++) {
+        ctx.fillRect(x, 0, Math.floor(width/2), height);
+    }
+    ctx.fillStyle = "rgba("+color2+",0.1)";
+    for (var x = 0; x < Math.floor(width/4); x++) {
+        ctx.fillRect(x+Math.floor(width/4), 0, Math.floor(width/4), height);
+    }
+
+    return canvas.toDataURL();
+}
+
+const Images = {
+    tile64grey: generateTexture(128, 64, '128,128,128', '255,255,255'),
+    tile64red: generateTexture(128, 64, '128,0,0', '255,0,0')
+};
 
 Grid = {
     view: function(vnode) {
@@ -24,12 +46,16 @@ Grid = {
         return m('table', { border: 1, style: 'border-radius: 8px;'},
             vnode.attrs.data.map(function(rowData, index) {
                 var border = '';
+
                 if (vnode.attrs.highlights && vnode.attrs.highlights.indexOf(index) > -1) {
-                    var border = 'border: 1px solid red; background-image: url(' + background + ');';
+                    border = 'border: 1px solid red; background-image: url(' + Images.tile64red + ');';
+                }
+                else {
+                    border = 'border: 1px solid black; background-image: url(' + Images.tile64grey + ');';
                 }
 
                 return m('tr', rowData.map(function(cellData) {
-                    return m('td', {style: border + 'border-radius: 8px; padding: 8px; width: 100px;'}, cellData)
+                    return m('td', {style: border + ' border-radius: 8px; padding: 8px; width: 100px;'}, cellData)
                 }))
             })
          );
