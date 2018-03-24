@@ -6,6 +6,7 @@ function startGame() {
         game.load.image('shelf', 'assets/sprites/shelf.png');
         game.load.image('background', 'assets/sprites/background.png');
         game.load.image('curtain', 'assets/sprites/curtain.png');
+        game.load.spritesheet('button', 'assets/sprites/button.png', 300, 100);
 
         for (var t = 1; t < 9; t++) {
             game.load.image('trophy'+t+'s', 'assets/sprites/trophy'+t+'s.png');
@@ -54,8 +55,8 @@ function startGame() {
         text.stroke = '#000000';
         text.strokeThickness = 2;
         text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
-        text.data.static = true;
         text.text = '';
+        text.anchor.set(0.5);
 
         texts.push(text);
     }
@@ -72,6 +73,13 @@ function startGame() {
     }
 
     var scoreText;
+
+    var button;
+
+    var totalScore = 0;
+    var goalScore = 0;
+    var goalReached = false;
+    var lifting = false;
 
     function create() {
 
@@ -132,8 +140,22 @@ function startGame() {
 
         var curtain = game.add.sprite(0, 0, 'curtain');
 
-        scoreText = game.add.text(game.world.centerX, 40, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        scoreText = game.add.text(game.world.centerX, 60, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        scoreText.stroke = '#000000';
+        scoreText.strokeThickness = 2;
+        scoreText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+        scoreText.anchor.set(0.5);
+
+        button = game.add.button(game.world.centerX, game.world.centerY, 'button', function() {
+            if (goalReached) {
+                location.reload();
+            }
+        }, this, 2, 1, 0);
+
+        button.alpha = 0;
+        button.anchor.set(0.5);
     }
+
 
     function click(pointer) {
 
@@ -151,6 +173,7 @@ function startGame() {
             clickedBody.toLocalFrame(localPointInBody, physicsPos);
 
             // use a revoluteContraint to attach mouseBody to the clicked body
+            lifting = true;
             mouseConstraint = this.game.physics.p2.createRevoluteConstraint(mouseBody, [0, 0], clickedBody, [game.physics.p2.mpxi(localPointInBody[0]), game.physics.p2.mpxi(localPointInBody[1]) ]);
             if (window.kongregate) {
                 window.kongregate.stats.submit("Trophies lifted", 1);
@@ -160,8 +183,9 @@ function startGame() {
     }
 
     function release() {
-
+        lifting = false;
         // remove constraint from object's body
+
         game.physics.p2.removeConstraint(mouseConstraint);
 
     }
@@ -173,9 +197,6 @@ function startGame() {
         mouseBody.position[1] = game.physics.p2.pxmi(pointer.position.y);
 
     }
-
-    var totalScore = 0;
-    var goalScore = 0;
 
     function update() {
         totalScore = 0;
@@ -200,7 +221,18 @@ function startGame() {
             goalScore += item.data.score * 1.3;
         });
 
+        goalScore = Math.round(goalScore);
+
         scoreText.text = totalScore + ' / ' + goalScore;
+
+        if (!lifting && totalScore >= goalScore) {
+            button.alpha = 1;
+            goalReached = true;
+        }
+        else {
+            button.alpha = 0;
+            goalReached = false;
+        }
     }
 
     function render() {
