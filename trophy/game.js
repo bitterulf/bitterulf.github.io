@@ -1,5 +1,5 @@
-function startGame() {
-    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+function getMainStage(game) {
+    var mainStage =  { preload: preload, create: create, update: update, render: render };
 
     var mouseBody;
     var mouseConstraint;
@@ -240,6 +240,38 @@ function startGame() {
     function render() {
     }
 
+    return mainStage;
+}
+
+function getStartStage(game) {
+    return {
+        preload: function(){
+            game.load.image('background', 'assets/sprites/background.png');
+        },
+        create: function() {
+            game.add.sprite(0, 0, 'background');
+            var title = game.add.text(game.world.centerX, 80, '', { font: "60px Arial",  fill: "#ffffff", align: "center" });
+            title.stroke = '#000000';
+            title.strokeThickness = 2;
+            title.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+            title.anchor.set(0.5);
+            title.text = 'TROPHY STACKER';
+        },
+        update: function() {
+
+        },
+        render: function() {
+
+        }
+    };
+}
+
+function startGame() {
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example');
+
+    game.state.add('Main', getMainStage(game));
+    game.state.add('Start', getStartStage(game));
+    game.state.start('Start');
 }
 
 if (localStorage) {
