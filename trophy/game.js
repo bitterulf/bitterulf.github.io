@@ -22,6 +22,7 @@ function startGame() {
 
     var items = [];
     var trophies = [];
+    var texts = [];
 
     function addShelf(x, y) {
         var item = game.add.sprite(x, y, 'shelf');
@@ -45,18 +46,18 @@ function startGame() {
 
         item.tint = styles[style];
 
-        const text = game.add.text(0, 80, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
-        console.log(text);
+        trophies.push(item);
+    }
+
+    function addText(x, y) {
+        const text = game.add.text(x, y, '', { font: "20px Arial",  fill: "#ffffff", align: "center" });
         text.stroke = '#000000';
         text.strokeThickness = 2;
-        text.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5);
+        text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
         text.data.static = true;
-        text.text = 'MEOW!';
+        text.text = '';
 
-        item.addChild(text);
-
-        trophies.push(item);
-        items.push(text);
+        texts.push(text);
     }
 
     function addRandomItem(x, y) {
@@ -84,11 +85,17 @@ function startGame() {
 
         addShelf(400, 400);
 
-        addRandomItem(200, 600);
-        addRandomItem(300, 600);
-        addRandomItem(400, 600);
-        addRandomItem(500, 600);
-        addRandomItem(600, 600);
+        addRandomItem(200, 450);
+        addRandomItem(300, 450);
+        addRandomItem(400, 450);
+        addRandomItem(500, 450);
+        addRandomItem(600, 450);
+
+        addText(200, 450);
+        addText(300, 450);
+        addText(400, 450);
+        addText(500, 450);
+        addText(600, 450);
 
         //  Create collision group for the blocks
 
@@ -173,7 +180,7 @@ function startGame() {
     function update() {
         totalScore = 0;
         goalScore = 0;
-        trophies.forEach(function(item) {
+        trophies.forEach(function(item, index) {
             const angleMultiplier = 1 - Math.abs(Math.round(item.angle)) / 180;
 
             const yMultiplier = 1 - item.y / 360;
@@ -188,8 +195,8 @@ function startGame() {
                 color = '#00ff00';
             }
             totalScore += calculatedScore;
-            item.children[0].text = calculatedScore + ' / ' + item.data.score;
-            item.children[0].style.fill = color;
+            texts[index].text = calculatedScore + ' / ' + item.data.score;
+            texts[index].style.fill = color;
             goalScore += item.data.score * 1.3;
         });
 
