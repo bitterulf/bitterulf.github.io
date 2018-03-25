@@ -353,11 +353,16 @@ function getStartStage(game) {
             });
 
             var button = game.add.button(game.world.centerX, 540, 'button', function() {
-                solvedLevels = {};
-                if (localStorage) {
-                    localStorage.setItem('trophyGameSolvedLevels', JSON.stringify(solvedLevels));
+                var resetConfirm = confirm('REALLY RESET PROGRESS?');
+
+                if (resetConfirm) {
+                    solvedLevels = {};
+                    if (localStorage) {
+                        localStorage.setItem('trophyGameSolvedLevels', JSON.stringify(solvedLevels));
+                    }
+                    game.state.start('Start', true, false, {});
                 }
-                game.state.start('Start', true, false, {});
+
             }, this, 2, 1, 0);
 
             button.alpha = 1;
