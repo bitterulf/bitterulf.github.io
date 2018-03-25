@@ -274,23 +274,41 @@ function getMainStage(game) {
 function getStartStage(game) {
     function addButton(x, y, level) {
         var button = game.add.button(x, y + 5, 'button', function() {
-            game.state.start('Main', true, false, level);
+            if (level.difficulty != 5) {
+                game.state.start('Main', true, false, level);
+            }
         }, this, 2, 1, 0);
 
         button.alpha = 1;
         button.anchor.set(0.5);
         button.scale.x = 0.45;
         button.scale.y = 0.45;
-        if (level.solved) {
+
+        if (level.difficulty == 5) {
+            button.tint = 0x4040ff;
+        }
+        if (level.difficulty == 4) {
             button.tint = 0x00ff00;
         }
+        else if (level.difficulty == 3) {
+            button.tint = 0x40ff40;
+        }
+        else if (level.difficulty == 2) {
+            button.tint = 0x80ff80;
+        }
 
-        var levelText = game.add.text(x, y, '', { font: "20px Arial",  fill: "#ffffff", align: "center" });
+        var levelText = game.add.text(x, y, '', { font: "16px Arial",  fill: "#ffffff", align: "center" });
         levelText.stroke = '#000000';
         levelText.strokeThickness = 2;
         levelText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
         levelText.anchor.set(0.5);
-        levelText.text = 'Level ' + level.level + ' - ' + level.difficulty;
+
+        if (level.difficulty == 5) {
+            levelText.text = 'Level ' + level.level + ' done';
+        }
+        else {
+            levelText.text = 'Level ' + level.level + ' - ' + level.difficulty;
+        }
     }
 
     return {
@@ -325,7 +343,6 @@ function getStartStage(game) {
                 levels.push({
                     level: l,
                     difficulty: solvedLevels[l] ? solvedLevels[l].difficulty + 1 : 1,
-                    solved: solvedLevels[l]
                 });
             }
 
