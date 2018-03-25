@@ -1,4 +1,4 @@
-var solvedLevels = [];
+var solvedLevels = {};
 
 function getMainStage(game) {
     var levelData;
@@ -139,7 +139,7 @@ function getMainStage(game) {
     function createButton() {
         var button = game.add.button(game.world.centerX, game.world.centerY, 'button', function() {
             if (goalReached) {
-                game.state.start('Start', true, false, {levelSolved: levelData.level });
+                game.state.start('Start', true, false, {levelSolved: levelData });
             }
         }, this, 2, 1, 0);
 
@@ -248,7 +248,7 @@ function getMainStage(game) {
             totalScore += calculatedScore;
             texts[index].text = calculatedScore + ' / ' + item.data.score;
             texts[index].style.fill = color;
-            goalScore += item.data.score * 1.25;
+            goalScore += item.data.score * (1 + levelData.difficulty * 0.1);
         });
 
         goalScore = Math.round(goalScore);
@@ -290,20 +290,18 @@ function getStartStage(game) {
         levelText.strokeThickness = 2;
         levelText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
         levelText.anchor.set(0.5);
-        levelText.text = 'Level ' + level.level;
+        levelText.text = 'Level ' + level.level + ' - ' + level.difficulty;
     }
 
     return {
         init: function(options) {
             if (options && options.levelSolved) {
-                if (solvedLevels.indexOf(options.levelSolved) == -1) {
-                    solvedLevels.push(options.levelSolved);
-                    if (window.kongregate) {
-                        window.kongregate.stats.submit("Level solved", 1);
-                    }
-                    if (localStorage) {
-                        localStorage.setItem('trophyGameSolvedLevels', JSON.stringify(solvedLevels));
-                    }
+                solvedLevels[options.levelSolved.level] = options.levelSolved;
+                if (window.kongregate) {
+                    window.kongregate.stats.submit("Level solved", 1);
+                }
+                if (localStorage) {
+                    localStorage.setItem('trophyGameSolvedLevels', JSON.stringify(solvedLevels));
                 }
             }
         },
@@ -323,9 +321,11 @@ function getStartStage(game) {
             var levels = [];
 
             for (var l = 1; l <= 30; l++ ) {
+                console.log('=>>>', solvedLevels, l, solvedLevels[l]);
                 levels.push({
                     level: l,
-                    solved: solvedLevels.indexOf(l) > -1
+                    difficulty: solvedLevels[l] ? solvedLevels[l].difficulty + 1 : 1,
+                    solved: solvedLevels[l]
                 });
             }
 
@@ -336,7 +336,7 @@ function getStartStage(game) {
             });
 
             var button = game.add.button(game.world.centerX, 540, 'button', function() {
-                solvedLevels = [];
+                solvedLevels = {};
                 if (localStorage) {
                     localStorage.setItem('trophyGameSolvedLevels', JSON.stringify(solvedLevels));
                 }
@@ -379,7 +379,7 @@ if (localStorage) {
         console.log(e);
     }
 
-    if (savedSolvedLevels && Array.isArray(savedSolvedLevels)) {
+    if (savedSolvedLevels) {
         solvedLevels = savedSolvedLevels;
     }
 }
