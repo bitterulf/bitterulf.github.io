@@ -334,6 +334,25 @@ function getStartStage(game) {
                 const x = index - y * 5;
                 addButton(game.world.centerX - 300 + x * 150, 150 + y * 60, level);
             });
+
+            var button = game.add.button(game.world.centerX, 540, 'button', function() {
+                solvedLevels = [];
+                if (localStorage) {
+                    localStorage.setItem('trophyGameSolvedLevels', JSON.stringify(solvedLevels));
+                }
+                game.state.start('Start', true, false, {});
+            }, this, 2, 1, 0);
+
+            button.alpha = 1;
+            button.anchor.set(0.5);
+            button.scale.x = 1;
+            button.scale.y = 0.5;
+
+            var levelText = game.add.text(game.world.centerX, 540 - 5, 'RESET PROGRESS', { font: "20px Arial",  fill: "#ffffff", align: "center" });
+            levelText.stroke = '#000000';
+            levelText.strokeThickness = 2;
+            levelText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+            levelText.anchor.set(0.5);
         },
         update: function() {
 
