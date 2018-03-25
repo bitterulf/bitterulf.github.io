@@ -12,6 +12,7 @@ function getMainStage(game) {
 
     var scoreText;
     var button;
+    var buttonText;
     var totalScore = 0;
     var goalScore = 0;
 
@@ -57,7 +58,7 @@ function getMainStage(game) {
         game.load.image('shelf', 'assets/sprites/shelf.png');
         game.load.image('background', 'assets/sprites/background.png');
         game.load.image('curtain', 'assets/sprites/curtain.png');
-        game.load.spritesheet('button', 'assets/sprites/button.png', 300, 100);
+        game.load.spritesheet('button', 'assets/sprites/emptyButton.png', 300, 100);
 
         preloadTrophies();
 
@@ -137,7 +138,7 @@ function getMainStage(game) {
     }
 
     function createButton() {
-        var button = game.add.button(game.world.centerX, game.world.centerY, 'button', function() {
+        var button = game.add.button(game.world.centerX, 540, 'button', function() {
             if (goalReached) {
                 game.state.start('Start', true, false, {levelSolved: levelData });
             }
@@ -147,6 +148,51 @@ function getMainStage(game) {
         button.anchor.set(0.5);
 
         return button;
+    }
+
+    function createButtonText() {
+        var text = game.add.text(game.world.centerX, 540 - 10, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        text.stroke = '#000000';
+        text.strokeThickness = 2;
+        text.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+        text.anchor.set(0.5);
+        text.text = 'Finish Level';
+        text.alpha = 0;
+        return text;
+    }
+
+    function createBackButton() {
+        var button = game.add.button(50, 50, 'button', function() {
+            game.state.start('Start', true, false, {});
+        }, this, 2, 1, 0);
+
+        button.anchor.set(0.5);
+        button.scale.x = 0.5;
+        button.scale.y = 0.5;
+
+        var leaveText = game.add.text(50, 50 - 5, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        leaveText.stroke = '#000000';
+        leaveText.strokeThickness = 2;
+        leaveText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+        leaveText.anchor.set(0.5);
+        leaveText.text = 'back';
+    }
+
+    function createHelpButton() {
+        var button = game.add.button(game.world.width - 50, 50, 'button', function() {
+            game.state.start('Start', true, false, {});
+        }, this, 2, 1, 0);
+
+        button.anchor.set(0.5);
+        button.scale.x = 0.5;
+        button.scale.y = 0.5;
+
+        var leaveText = game.add.text(game.world.width - 50, 50 - 5, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        leaveText.stroke = '#000000';
+        leaveText.strokeThickness = 2;
+        leaveText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+        leaveText.anchor.set(0.5);
+        leaveText.text = 'help';
     }
 
     function create() {
@@ -188,6 +234,9 @@ function getMainStage(game) {
         scoreText = createScoreText();
 
         button = createButton();
+        buttonText = createButtonText();
+        createBackButton();
+        createHelpButton();
     }
 
     function getTrophyUnderPointer(pointer) {
@@ -257,10 +306,12 @@ function getMainStage(game) {
 
         if (!lifting && totalScore >= goalScore) {
             button.alpha = 1;
+            buttonText.alpha = 1;
             goalReached = true;
         }
         else {
             button.alpha = 0;
+            buttonText.alpha = 0;
             goalReached = false;
         }
     }
@@ -369,11 +420,11 @@ function getStartStage(game) {
             button.scale.x = 1;
             button.scale.y = 0.5;
 
-            var levelText = game.add.text(game.world.centerX, 540 - 5, 'RESET PROGRESS', { font: "20px Arial",  fill: "#ffffff", align: "center" });
-            levelText.stroke = '#000000';
-            levelText.strokeThickness = 2;
-            levelText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
-            levelText.anchor.set(0.5);
+            var resetText = game.add.text(game.world.centerX, 540 - 5, 'RESET PROGRESS', { font: "20px Arial",  fill: "#ffffff", align: "center" });
+            resetText.stroke = '#000000';
+            resetText.strokeThickness = 2;
+            resetText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+            resetText.anchor.set(0.5);
         },
         update: function() {
 
