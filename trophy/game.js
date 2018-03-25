@@ -339,7 +339,6 @@ function getStartStage(game) {
             var levels = [];
 
             for (var l = 1; l <= 30; l++ ) {
-                console.log('=>>>', solvedLevels, l, solvedLevels[l]);
                 levels.push({
                     level: l,
                     difficulty: solvedLevels[l] ? solvedLevels[l].difficulty + 1 : 1,
@@ -386,7 +385,7 @@ function getStartStage(game) {
 }
 
 function startGame() {
-    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example');
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'trophy-stacker-game');
 
     game.state.add('Main', getMainStage(game));
     game.state.add('Start', getStartStage(game));
