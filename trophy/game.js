@@ -180,7 +180,7 @@ function getMainStage(game) {
 
     function createHelpButton() {
         var button = game.add.button(game.world.width - 50, 50, 'button', function() {
-            game.state.start('Start', true, false, {});
+            game.state.start('Help', true, false, {});
         }, this, 2, 1, 0);
 
         button.anchor.set(0.5);
@@ -435,11 +435,63 @@ function getStartStage(game) {
     };
 }
 
+function getHelpStage(game) {
+
+    function createBackButton() {
+        var button = game.add.button(50, 50, 'button', function() {
+            game.state.start('Start', true, false, {});
+        }, this, 2, 1, 0);
+
+        button.anchor.set(0.5);
+        button.scale.x = 0.5;
+        button.scale.y = 0.5;
+
+        var leaveText = game.add.text(50, 50 - 5, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+        leaveText.stroke = '#000000';
+        leaveText.strokeThickness = 2;
+        leaveText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+        leaveText.anchor.set(0.5);
+        leaveText.text = 'back';
+    }
+
+    return {
+        preload: function(){
+            game.load.image('background', 'assets/sprites/background.png');
+            game.load.spritesheet('button', 'assets/sprites/emptyButton.png', 300, 100);
+        },
+        create: function() {
+            game.add.sprite(0, 0, 'background');
+            var title = game.add.text(game.world.centerX, 80, '', { font: "60px Arial",  fill: "#ffffff", align: "center" });
+            title.stroke = '#000000';
+            title.strokeThickness = 2;
+            title.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+            title.anchor.set(0.5);
+            title.text = 'HELP';
+
+            var info = game.add.text(game.world.centerX, game.world.centerY, '', { font: "30px Arial",  fill: "#ffffff", align: "center" });
+            info.stroke = '#000000';
+            info.strokeThickness = 2;
+            info.setShadow(2, 2, 'rgba(0,0,0,0.5)', 5);
+            info.anchor.set(0.5);
+            info.text = 'Put the trophies on the board.\n Trophies should be as high a possible.\n Trophies should stand upright for more points.\n Trophies have different value based on size and material.\n Level become harder each time you solve them.';
+
+            createBackButton();
+        },
+        update: function() {
+
+        },
+        render: function() {
+
+        }
+    };
+}
+
+
 function startGame() {
     var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'trophy-stacker-game');
-
     game.state.add('Main', getMainStage(game));
     game.state.add('Start', getStartStage(game));
+    game.state.add('Help', getHelpStage(game));
     game.state.start('Start');
 }
 
