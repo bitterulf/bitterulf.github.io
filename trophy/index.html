@@ -20,25 +20,8 @@
         <script>
             kongregateAPI.loadAPI(function(){
                 window.kongregate = kongregateAPI.getAPI();
-                console.log('kongregate active');
-                window.kongregate.services.addEventListener('login', function(){
-                    var username = window.kongregate.services.getUsername();
-                    console.log('Kongregate username changed to: ' + username);
-                });
                 if (!window.kongregate.services.isGuest()) {
-                    console.log('username', window.kongregate.services.getUsername());
                     window.kongregate.stats.submit("game started", 1);
-
-                    fetch('./data.json?token='+kongregate.services.getGameAuthToken()+'&userId='+kongregate.services.getUserId())
-                        .then(function(response) {
-                            return response.json();
-                        })
-                        .then(function(data) {
-                            console.log(data);
-                        });
-                }
-                else {
-                    console.log('hello guest');
                 }
             });
         </script>
