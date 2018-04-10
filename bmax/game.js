@@ -6,6 +6,22 @@ function changeHue (image, hue) {
     return canvas;
 }
 
+var Extendor = function (game) {
+    Phaser.Sprite.call(this, game, game.world.randomX, game.world.randomY, 'dynamic');
+    this.anchor.setTo(0.5, 0.5);
+    this.rotateSpeed = 1;
+    // var randomScale = 0.1 + Math.random();
+    // this.scale.setTo(randomScale, randomScale)
+    game.add.existing(this);
+};
+
+Extendor.prototype = Object.create(Phaser.Sprite.prototype);
+Extendor.prototype.constructor = Extendor;
+
+Extendor.prototype.update = function() {
+    this.angle += this.rotateSpeed;
+};
+
 function getStartStage(game) {
     return {
         init: function(options) {
@@ -39,6 +55,7 @@ function getStartStage(game) {
             game.cache.addSpriteSheet('dynamic', '', bmd.canvas, 64, 64, 4);
 
             var sprite = game.add.sprite(64, 64, 'dynamic');
+
             var animation1 = sprite.animations.add('animation1', [0, 1]);
             var animation2 = sprite.animations.add('animation2', [2, 3]);
 
@@ -53,6 +70,13 @@ function getStartStage(game) {
             sprite.animations.play('animation1', 2);
 
             sprite.anchor.set(0.5);
+
+            var button = game.add.button(game.world.centerX, game.world.centerY, 'dynamic', function() {
+                console.log(this.stage.children);
+            }, this, 2, 1, 0);
+
+            new Extendor(game);
+
         },
         update: function() {
 
