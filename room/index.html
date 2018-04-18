@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>room</title>
+        <script src="emitter.js"></script>
+    </head>
+    <body>
+        <script>
+            var store = new Emitter();
+            store.addEventListener("updateData", function(event) {
+                screen.dispatchEvent(new Event("render"));
+            })
+
+            var screen = new Emitter();
+            screen.addEventListener("click", function(event) {
+                delivery.dispatchEvent(new Event("actionDelivery"));
+            })
+            screen.addEventListener("render", function(event) {
+                console.log('here we render');
+            })
+
+            var delivery = new Emitter();
+            delivery.addEventListener("actionDelivery", function(event) {
+                strategy.dispatchEvent(new Event("actionRequest"));
+            })
+            delivery.addEventListener("dataDelivery", function(event) {
+                store.dispatchEvent(new Event("updateData"));
+            })
+
+            var strategy = new Emitter();
+            strategy.addEventListener("actionRequest", function(event) {
+               archive.dispatchEvent(new Event("saveData"));
+            })
+
+            var archive = new Emitter();
+            archive.addEventListener("saveData", function(event) {
+               delivery.dispatchEvent(new Event("dataDelivery"));
+            })
+
+            screen.dispatchEvent(new Event("click"));
+        </script>
+    </body>
+</html>
