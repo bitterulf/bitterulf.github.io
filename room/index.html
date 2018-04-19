@@ -2,8 +2,10 @@
     <head>
         <title>room</title>
         <script src="emitter.js"></script>
+        <script src="//unpkg.com/mithril/mithril.js"></script>
     </head>
     <body>
+        <div id="root"></div>
         <script>
             var fe = new Emitter();
             var be = new Emitter();
@@ -15,17 +17,59 @@
             }
 
             function initScreen(fe) {
+                var state = {
+                    counter: 0
+                };
+
                 fe.addEventListener("screen.click", function(event) {
-                    fe.dispatchEvent(new Event("delivery.actionDelivery"));
-                })
+                    var detail = event.detail;
+                    if (detail.name === 'login') {
+                        console.log(event);
+                        fe.dispatchEvent(new CustomEvent("delivery.actionDelivery", {
+                            detail: {
+                                action: 'login',
+                                payload: {
+                                    username: 'bob',
+                                    password: 'king'
+                                }
+                            }
+                        }));
+                    }
+                });
+
                 fe.addEventListener("screen.render", function(event) {
-                    console.log('here we render');
-                })
+                    state.counter++;
+                    m.redraw();
+                });
+
+                var onclick = function(ev) {
+                    var data = Object.assign({}, ev.target.dataset);
+                    fe.dispatchEvent(new CustomEvent(
+                        "screen.click", { detail: data }
+                    ));
+                };
+
+                var Screen = {
+                    view: function() {
+                        return m("main", [
+                            m("button", {
+                                "data-name": 'login',
+                                onclick: onclick
+                            }, state.counter),
+                            m("button", {
+                                "data-name": 'nothing',
+                                onclick: onclick
+                            }, 'nothing')
+                        ]);
+                    }
+                }
+
+                m.mount(document.getElementById('root'), Screen)
             }
 
             function initDelivery(fe, be) {
                 fe.addEventListener("delivery.actionDelivery", function(event) {
-                    be.dispatchEvent(new Event("strategy.actionRequest"));
+                    be.dispatchEvent(new CustomEvent("strategy.actionRequest", { detail: event.detail }));
                 })
 
                 be.addEventListener("delivery.dataDelivery", function(event) {
@@ -34,13 +78,29 @@
             }
 
             function initStrategy(be) {
+                var state = {
+                    loggedInUsers: []
+                };
+
                 be.addEventListener("strategy.actionRequest", function(event) {
-                   be.dispatchEvent(new Event("archive.saveData"));
+                   var detail = event.detail;
+                    if (detail.action === 'login') {
+                       if (state.loggedInUsers.indexOf(detail.payload.username) === -1) {
+                           state.loggedInUsers.push(detail.payload.username);
+
+                            be.dispatchEvent(new CustomEvent("archive.saveData", { detail: {
+                               key: 'loggedInUsers',
+                               content: state.loggedInUsers
+                           } }));
+                       }
+                    }
                 })
             }
 
             function initArchive(be) {
                 be.addEventListener("archive.saveData", function(event) {
+                    var detail = JSON.parse(JSON.stringify(event.detail));
+                    console.log('need to save that', event.detail);
                    be.dispatchEvent(new Event("delivery.dataDelivery"));
                 })
             }
@@ -51,7 +111,6 @@
             initStrategy(be);
             initArchive(be);
 
-            fe.dispatchEvent(new Event("screen.click"));
         </script>
     </body>
 </html>
