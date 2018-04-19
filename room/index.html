@@ -5,38 +5,53 @@
     </head>
     <body>
         <script>
-            var store = new Emitter();
-            store.addEventListener("updateData", function(event) {
-                screen.dispatchEvent(new Event("render"));
-            })
+            var fe = new Emitter();
+            var be = new Emitter();
 
-            var screen = new Emitter();
-            screen.addEventListener("click", function(event) {
-                delivery.dispatchEvent(new Event("actionDelivery"));
-            })
-            screen.addEventListener("render", function(event) {
-                console.log('here we render');
-            })
+            function initStore(fe) {
+                fe.addEventListener("store.updateData", function(event) {
+                    fe.dispatchEvent(new Event("screen.render"));
+                })
+            }
 
-            var delivery = new Emitter();
-            delivery.addEventListener("actionDelivery", function(event) {
-                strategy.dispatchEvent(new Event("actionRequest"));
-            })
-            delivery.addEventListener("dataDelivery", function(event) {
-                store.dispatchEvent(new Event("updateData"));
-            })
+            function initScreen(fe) {
+                fe.addEventListener("screen.click", function(event) {
+                    fe.dispatchEvent(new Event("delivery.actionDelivery"));
+                })
+                fe.addEventListener("screen.render", function(event) {
+                    console.log('here we render');
+                })
+            }
 
-            var strategy = new Emitter();
-            strategy.addEventListener("actionRequest", function(event) {
-               archive.dispatchEvent(new Event("saveData"));
-            })
+            function initDelivery(fe, be) {
+                fe.addEventListener("delivery.actionDelivery", function(event) {
+                    be.dispatchEvent(new Event("strategy.actionRequest"));
+                })
 
-            var archive = new Emitter();
-            archive.addEventListener("saveData", function(event) {
-               delivery.dispatchEvent(new Event("dataDelivery"));
-            })
+                be.addEventListener("delivery.dataDelivery", function(event) {
+                    fe.dispatchEvent(new Event("store.updateData"));
+                })
+            }
 
-            screen.dispatchEvent(new Event("click"));
+            function initStrategy(be) {
+                be.addEventListener("strategy.actionRequest", function(event) {
+                   be.dispatchEvent(new Event("archive.saveData"));
+                })
+            }
+
+            function initArchive(be) {
+                be.addEventListener("archive.saveData", function(event) {
+                   be.dispatchEvent(new Event("delivery.dataDelivery"));
+                })
+            }
+
+            initStore(fe);
+            initScreen(fe);
+            initDelivery(fe, be);
+            initStrategy(be);
+            initArchive(be);
+
+            fe.dispatchEvent(new Event("screen.click"));
         </script>
     </body>
 </html>
