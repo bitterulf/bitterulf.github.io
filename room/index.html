@@ -2,6 +2,11 @@
     <head>
         <title>room</title>
         <script src="emitter.js"></script>
+        <script src="store.js"></script>
+        <script src="screen.js"></script>
+        <script src="delivery.js"></script>
+        <script src="strategy.js"></script>
+        <script src="archive.js"></script>
         <script src="//unpkg.com/mithril/mithril.js"></script>
     </head>
     <body>
@@ -10,194 +15,13 @@
             var fe = new Emitter();
             var be = new Emitter();
 
-            function initStore(fe) {
-                fe.addEventListener("store.updateData", function(event) {
-                    // maybe throttle things
-                    fe.dispatchEvent(new CustomEvent("screen.render", { detail: event.detail }));
-                })
-                fe.addEventListener("store.message", function(event) {
-                    // maybe throttle things
-                    fe.dispatchEvent(new CustomEvent("screen.message", { detail: event.detail }));
-                })
-            }
+            var logClient = function(message) {
+                console.log('CLIENT', message);
+            };
 
-            function initScreen(fe) {
-                var state = {
-                    remote: {}
-                };
-
-                fe.addEventListener("screen.click", function(event) {
-                    var detail = event.detail;
-                    if (detail.name === 'login') {
-                        console.log(event);
-                        fe.dispatchEvent(new CustomEvent("delivery.actionDelivery", {
-                            detail: {
-                                action: 'login',
-                                payload: {
-                                    username: 'bob',
-                                    password: 'king'
-                                }
-                            }
-                        }));
-                    }
-                    else if (detail.name === 'dance') {
-                        console.log(event);
-                        fe.dispatchEvent(new CustomEvent("delivery.actionDelivery", {
-                            detail: {
-                                action: 'dance',
-                                payload: {
-                                }
-                            }
-                        }));
-                    }
-                });
-
-                fe.addEventListener("screen.render", function(event) {
-                    state.remote = event.detail;
-                    m.redraw();
-                });
-
-                var onclick = function(ev) {
-                    var data = Object.assign({}, ev.target.dataset);
-                    fe.dispatchEvent(new CustomEvent(
-                        "screen.click", { detail: data }
-                    ));
-                };
-
-                fe.addEventListener("screen.message", function(event) {
-                    console.log('screen got:', event.detail);
-                });
-
-                var Screen = {
-                    view: function() {
-                        return m("main", [
-                            state.remote.loggedInUsers ? m('div', state.remote.loggedInUsers.join(',') ) : null,
-                            m("button", {
-                                "data-name": 'login',
-                                onclick: onclick
-                            }, 'login'),
-                            m("button", {
-                                "data-name": 'nothing',
-                                onclick: onclick
-                            }, 'nothing'),
-                            m("button", {
-                                "data-name": 'dance',
-                                onclick: onclick
-                            }, 'dance')
-                        ]);
-                    }
-                }
-
-                m.mount(document.getElementById('root'), Screen)
-            }
-
-            function initDelivery(fe, be) {
-                var connectionId = 'connection1';
-
-                fe.addEventListener("delivery.actionDelivery", function(event) {
-                    var detail = JSON.parse(JSON.stringify(event.detail));
-                    detail.connectionId = connectionId;
-                    be.dispatchEvent(new CustomEvent("strategy.actionRequest", { detail: detail }));
-                })
-
-                be.addEventListener("delivery.dataDelivery", function(event) {
-                    if (!event.detail.connectionId) {
-                        console.log('send to all');
-                        fe.dispatchEvent(new CustomEvent("store.updateData", { detail: event.detail.content }));
-                    }
-                    else if (event.detail.connectionId === connectionId) {
-                        console.log('send to one');
-                        fe.dispatchEvent(new CustomEvent("store.updateData", { detail: event.detail.content }));
-                    }
-                })
-
-                be.addEventListener("delivery.messageDelivery", function(event) {
-                    if (event.detail.connectionId === connectionId) {
-                        fe.dispatchEvent(new CustomEvent("store.message", { detail: event.detail.content }));
-                    }
-                })
-            }
-
-            function initStrategy(be) {
-                var logins = {};
-                var users = {
-                    bob: { password: 'king' }
-                };
-                var state = {
-                    loggedInUsers: []
-                };
-
-                be.addEventListener("strategy.actionRequest", function(event) {
-                   var detail = event.detail;
-                    console.log('connectionId', detail.connectionId);
-                    var user = logins[detail.connectionId];
-
-                    if (detail.action === 'login') {
-                       var username = detail.payload.username;
-                       var password = detail.payload.password;
-                       if (users[username] && users[username].password === password ) {
-                           logins[detail.connectionId] = username;
-                           be.dispatchEvent(new CustomEvent("archive.updateLogins", { detail: logins }));
-
-                           if (state.loggedInUsers.indexOf(username) === -1) {
-                               state.loggedInUsers.push(username);
-
-                                be.dispatchEvent(new CustomEvent("archive.saveData", { detail: {
-                                   key: 'loggedInUsers',
-                                   content: state.loggedInUsers
-                               } }));
-                           }
-                       }
-                    }
-                    else if (detail.action === 'dance') {
-                        if (!user) {
-                            console.log('i dont know you');
-                        }
-                        else {
-                            console.log(user, 'is dancing');
-                            be.dispatchEvent(new CustomEvent("archive.sendMessage", { detail: {
-                               connectionId: detail.connectionId,
-                               content: user +' is dancing'
-                            } }));
-                        }
-                    }
-                })
-            }
-
-            function initArchive(be) {
-                var cache = {
-                    logins: {}
-                };
-                var state = {};
-                be.addEventListener("archive.saveData", function(event) {
-                    var detail = JSON.parse(JSON.stringify(event.detail));
-                    state[detail.key] = detail.content;
-
-                    Object.keys(cache.logins).forEach(function(connectionId) {
-                        var user = cache.logins[connectionId];
-                        console.log('send to user', user);
-                        be.dispatchEvent(new CustomEvent("delivery.dataDelivery",
-                            {
-                                detail: {
-                                    connectionId: connectionId,
-                                    content: JSON.parse(JSON.stringify(state))
-                                }
-                            }
-                        ));
-                    });
-                })
-                be.addEventListener("archive.sendMessage", function(event) {
-                    be.dispatchEvent(new CustomEvent("delivery.messageDelivery",
-                        {
-                            detail: event.detail
-                        }
-                    ));
-                })
-                be.addEventListener("archive.updateLogins", function(event) {
-                    var detail = JSON.parse(JSON.stringify(event.detail));
-                    cache.logins = event.detail;
-                })
-            }
+            var logServer = function(message) {
+                console.log('SERVER', message);
+            };
 
             initStore(fe);
             initScreen(fe);
