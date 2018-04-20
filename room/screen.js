@@ -1,7 +1,7 @@
 function initScreen(fe) {
     var log = logClient;
     var state = {
-        remote: {}
+        remote: null
     };
 
     fe.addEventListener("screen.click", function(event) {
@@ -46,18 +46,32 @@ function initScreen(fe) {
         log('screen got: ' + event.detail);
     });
 
+    var PlanetList = {
+        view: function(vnode) {
+            return vnode.children.map(function(planet) {
+                return m('div', '['+planet.name+']');
+            });
+        }
+    };
+
     var Screen = {
         view: function() {
+            if (!state.remote) {
+                return m("main", [
+                    m("button", {
+                        "data-name": 'login',
+                        onclick: onclick
+                    }, 'login'),
+                    m("button", {
+                        "data-name": 'dance',
+                        onclick: onclick
+                    }, 'dance')
+                ]);
+            }
+
             return m("main", [
                 state.remote.loggedInUsers ? m('div', state.remote.loggedInUsers.join(',') ) : null,
-                m("button", {
-                    "data-name": 'login',
-                    onclick: onclick
-                }, 'login'),
-                m("button", {
-                    "data-name": 'nothing',
-                    onclick: onclick
-                }, 'nothing'),
+                state.remote.planets ? m(PlanetList, state.remote.planets) : null,
                 m("button", {
                     "data-name": 'dance',
                     onclick: onclick
