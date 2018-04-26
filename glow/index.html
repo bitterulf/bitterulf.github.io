@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>glow</title>
+</head>
+<script src="pixi.min.js"></script>
+
+<body>
+    <script type="text/javascript">
+        function onDragStart(event) {
+            // store a reference to the data
+            // the reason for this is because of multitouch
+            // we want to track the movement of this particular touch
+            this.data = event.data;
+            this.alpha = 0.5;
+            this.dragging = true;
+        }
+
+        function onDragEnd() {
+            this.alpha = 1;
+            this.dragging = false;
+            // set the interaction data to null
+            this.data = null;
+        }
+
+        function onDragMove() {
+            if (this.dragging) {
+                var newPosition = this.data.getLocalPosition(this.parent);
+                this.x = newPosition.x;
+                this.y = newPosition.y;
+            }
+        }
+
+        const ObjectManager = function (stage) {
+            this.stage = stage;
+            this.existingObjects = {};
+
+            this.update = function(objects) {
+                const stage = this.stage;
+                const existingObjects = this.existingObjects;
+
+                Object.keys(existingObjects).forEach(function(key) {
+                    if (!objects[key]) {
+                        console.log('remove');
+                        stage.removeChild(existingObjects[key]);
+                        delete existingObjects[key];
+
+                    }
+                });
+
+                Object.keys(objects).forEach(function(key) {
+                    const objData = objects[key];
+
+                    if (existingObjects[key]) {
+                        console.log('update');
+                        existingObjects[key].x = objData.x;
+                        existingObjects[key].y = objData.y;
+                    } else {
+                        console.log('create');
+                        let sprite = new PIXI.Sprite(PIXI.loader.resources[objData.sprite].texture);
+                        sprite.x = objData.x;
+                        sprite.y = objData.y;
+                        sprite.anchor.x = 0.5;
+                        sprite.anchor.y = 0.5;
+
+                        sprite.buttonMode = true;
+                        sprite.interactive = true;
+                        sprite
+                            .on('pointerdown', onDragStart)
+                            .on('pointerup', onDragEnd)
+                            .on('pointerupoutside', onDragEnd)
+                            .on('pointermove', onDragMove);
+
+                        sprite.tint = Math.random() * 0xFFFFFF;
+                        sprite.blendmode = PIXI.BLEND_MODES.ADD;
+
+                        stage.addChild(sprite);
+                        existingObjects[key] = sprite;
+                    }
+                });
+            };
+        }
+
+        PIXI.loader
+            .add("../trophy/assets/sprites/trophy1.png")
+            .load(function () {
+            let app = new PIXI.Application({
+                width: 256
+                , height: 256
+                , forceCanvas: true
+            });
+            app.renderer.backgroundColor = 0x061639;
+            document.body.appendChild(app.view);
+            const manager = new ObjectManager(app.stage);
+
+            manager.update({
+                foo: { sprite: "../trophy/assets/sprites/trophy1.png", x: 128, y: 128 },
+                foo2: { sprite: "../trophy/assets/sprites/trophy1.png", x: 64, y: 64 }
+            });
+
+            manager.update({
+                foo: { sprite: "../trophy/assets/sprites/trophy1.png", x: 128, y: 128 },
+                foo2: { sprite: "../trophy/assets/sprites/trophy1.png", x: 64, y: 128 }
+            });
+
+            manager.update({
+                foo2: { sprite: "../trophy/assets/sprites/trophy1.png", x: 64, y: 128 },
+                foo6: { sprite: "../trophy/assets/sprites/trophy1.png", x: 64, y: 128 }
+            });
+        });
+    </script>
+</body>
+
+</html>
